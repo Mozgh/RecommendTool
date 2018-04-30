@@ -9,7 +9,7 @@ public class ClusterTask {
 
     private Integer method;
 
-    private String describe;
+    private String describes;
 
     private Integer center;
 
@@ -49,12 +49,12 @@ public class ClusterTask {
         this.method = method;
     }
 
-    public String getDescribe() {
-        return describe;
+    public String getDescribes() {
+        return describes;
     }
 
-    public void setDescribe(String describe) {
-        this.describe = describe;
+    public void setDescribes(String describes) {
+        this.describes = describes;
     }
 
     public Integer getCenter() {

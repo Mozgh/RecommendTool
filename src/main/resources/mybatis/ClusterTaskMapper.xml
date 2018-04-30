@@ -6,7 +6,7 @@
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="method" jdbcType="INTEGER" property="method" />
-    <result column="describe" jdbcType="VARCHAR" property="describe" />
+    <result column="describes" jdbcType="VARCHAR" property="describes" />
     <result column="center" jdbcType="INTEGER" property="center" />
     <result column="state" jdbcType="INTEGER" property="state" />
     <result column="del_flag" jdbcType="INTEGER" property="delFlag" />
@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_id, name, method, describe, center, state, del_flag
+    id, user_id, name, method, describes, center, state, del_flag
   </sql>
   <select id="selectByExample" parameterType="com.recommend.operation.core.dao.model.ClusterTaskExample" resultMap="BaseResultMap">
     select
@@ -105,10 +105,10 @@
   </delete>
   <insert id="insert" parameterType="com.recommend.operation.core.dao.model.ClusterTask">
     insert into cluster_task (id, user_id, name, 
-      method, describe, center, 
+      method, describes, center, 
       state, del_flag)
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{method,jdbcType=INTEGER}, #{describe,jdbcType=VARCHAR}, #{center,jdbcType=INTEGER}, 
+      #{method,jdbcType=INTEGER}, #{describes,jdbcType=VARCHAR}, #{center,jdbcType=INTEGER}, 
       #{state,jdbcType=INTEGER}, #{delFlag,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.recommend.operation.core.dao.model.ClusterTask">
@@ -126,8 +126,8 @@
       <if test="method != null">
         method,
       </if>
-      <if test="describe != null">
-        describe,
+      <if test="describes != null">
+        describes,
       </if>
       <if test="center != null">
         center,
@@ -152,8 +152,8 @@
       <if test="method != null">
         #{method,jdbcType=INTEGER},
       </if>
-      <if test="describe != null">
-        #{describe,jdbcType=VARCHAR},
+      <if test="describes != null">
+        #{describes,jdbcType=VARCHAR},
       </if>
       <if test="center != null">
         #{center,jdbcType=INTEGER},
@@ -187,8 +187,8 @@
       <if test="record.method != null">
         method = #{record.method,jdbcType=INTEGER},
       </if>
-      <if test="record.describe != null">
-        describe = #{record.describe,jdbcType=VARCHAR},
+      <if test="record.describes != null">
+        describes = #{record.describes,jdbcType=VARCHAR},
       </if>
       <if test="record.center != null">
         center = #{record.center,jdbcType=INTEGER},
@@ -210,7 +210,7 @@
       user_id = #{record.userId,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       method = #{record.method,jdbcType=INTEGER},
-      describe = #{record.describe,jdbcType=VARCHAR},
+      describes = #{record.describes,jdbcType=VARCHAR},
       center = #{record.center,jdbcType=INTEGER},
       state = #{record.state,jdbcType=INTEGER},
       del_flag = #{record.delFlag,jdbcType=INTEGER}
@@ -230,8 +230,8 @@
       <if test="method != null">
         method = #{method,jdbcType=INTEGER},
       </if>
-      <if test="describe != null">
-        describe = #{describe,jdbcType=VARCHAR},
+      <if test="describes != null">
+        describes = #{describes,jdbcType=VARCHAR},
       </if>
       <if test="center != null">
         center = #{center,jdbcType=INTEGER},
@@ -250,7 +250,7 @@
     set user_id = #{userId,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       method = #{method,jdbcType=INTEGER},
-      describe = #{describe,jdbcType=VARCHAR},
+      describes = #{describes,jdbcType=VARCHAR},
       center = #{center,jdbcType=INTEGER},
       state = #{state,jdbcType=INTEGER},
       del_flag = #{delFlag,jdbcType=INTEGER}

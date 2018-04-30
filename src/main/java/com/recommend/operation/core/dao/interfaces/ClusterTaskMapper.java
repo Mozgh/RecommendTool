@@ -4,7 +4,9 @@ import com.recommend.operation.core.dao.model.ClusterTask;
 import com.recommend.operation.core.dao.model.ClusterTaskExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface ClusterTaskMapper {
     long countByExample(ClusterTaskExample example);
 
