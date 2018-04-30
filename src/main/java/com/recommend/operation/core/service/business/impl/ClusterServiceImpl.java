@@ -1,11 +1,16 @@
 package com.recommend.operation.core.service.business.impl;
 
+import com.recommend.operation.core.dao.interfaces.ClusterAttrMapper;
 import com.recommend.operation.core.dao.interfaces.ClusterTaskMapper;
+import com.recommend.operation.core.dao.model.ClusterAttr;
 import com.recommend.operation.core.dao.model.ClusterTask;
 import com.recommend.operation.core.service.business.interfaces.IClusterSV;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by feir4 on 2018/4/29.
@@ -14,7 +19,13 @@ import javax.annotation.Resource;
 public class ClusterServiceImpl implements IClusterSV {
 
     @Resource
-    ClusterTaskMapper taskMapper;
+    private ClusterTaskMapper taskMapper;
+
+    @Resource
+    private ClusterAttrMapper attrMapper;
+
+    private Logger logger = Logger.getLogger(ClusterServiceImpl.class);
+
     @Override
     public Integer createTask(ClusterTask task) throws Exception{
         Integer newId = null;
@@ -25,13 +36,22 @@ public class ClusterServiceImpl implements IClusterSV {
     }
 
     @Override
-    public void updateTask(ClusterTask task) {
-
+    public int updateTask(ClusterTask task) {
+        if (null == task) {
+            return 0;
+        }
+        return taskMapper.updateByPrimaryKeySelective(task);
     }
 
     @Override
-    public void deleteTask(Integer taskId) {
-
+    public int deleteTask(Integer taskId) {
+        if (null == taskId) {
+            return 0;
+        }
+        ClusterTask task = new ClusterTask();
+        task.setId(taskId);
+        task.setDelFlag(1);
+        return taskMapper.updateByPrimaryKeySelective(task);
     }
 
     @Override
@@ -40,8 +60,21 @@ public class ClusterServiceImpl implements IClusterSV {
     }
 
     @Override
-    public void importAttribute() {
-
+    public int importAttribute(List<ClusterAttr> attrList) throws Exception{
+        int insertCount = 0;
+        if (CollectionUtils.isEmpty(attrList)) {
+            return 0;
+        }
+        for (ClusterAttr attr : attrList) {
+            Integer newAttrId = attrMapper.insert(attr);
+            if (null != newAttrId) {
+                logger.info("insert new Cluster Attribute : " + newAttrId);
+                insertCount ++;
+            } else {
+                logger.error("Cluster Attribute insert failed : " + attr.getName());
+            }
+        }
+        return insertCount;
     }
 
     @Override

@@ -1,12 +1,15 @@
 package service;
 
+import com.recommend.operation.core.dao.model.ClusterAttr;
 import com.recommend.operation.core.dao.model.ClusterTask;
-import com.recommend.operation.core.service.business.impl.ClusterServiceImpl;
 import com.recommend.operation.core.service.business.interfaces.IClusterSV;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author zhanggh
@@ -16,7 +19,7 @@ import org.springframework.test.context.ContextConfiguration;
 public class ClusterServiceTest {
 
     @Autowired
-    IClusterSV clusterSV;
+    private IClusterSV clusterSV;
 
     @Test
     public void createTaskTest() throws Exception {
@@ -30,6 +33,49 @@ public class ClusterServiceTest {
         task.setState(0);
         Integer newId = clusterSV.createTask(task);
         System.out.println(newId);
+    }
+
+    @Test
+    public void delTask() throws Exception {
+        Integer id = 1001;
+        int delCount = clusterSV.deleteTask(id);
+        System.out.println(delCount);
+    }
+
+    @Test
+    public void importAttrs() throws Exception {
+        List<String> nameList = new ArrayList<>();
+        List<String> codeList = new ArrayList<>();
+        Integer taskId = 1001;
+        List<Integer> typeList = new ArrayList<>();
+        nameList.add("userId");
+        nameList.add("movieId");
+        nameList.add("genre");
+        nameList.add("rating");
+
+        codeList.addAll(nameList);
+
+        typeList.add(3);
+        typeList.add(3);
+        typeList.add(3);
+        typeList.add(1);
+
+        List<ClusterAttr> attrList = new ArrayList<>();
+
+        for (int i = 0 ; i < 4 ; i++) {
+            ClusterAttr attr = new ClusterAttr();
+            attr.setName(nameList.get(i));
+            attr.setCode(codeList.get(i));
+            attr.setSort(i+1);
+            attr.setType(typeList.get(i));
+            attr.setTaskId(taskId);
+
+            attrList.add(attr);
+        }
+
+        System.out.println("attr count: " + attrList.size());
+        int count = clusterSV.importAttribute(attrList);
+        System.out.println("import count: " + count);
     }
 
 }

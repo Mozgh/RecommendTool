@@ -1,6 +1,9 @@
 package com.recommend.operation.core.service.business.interfaces;
 
+import com.recommend.operation.core.dao.model.ClusterAttr;
 import com.recommend.operation.core.dao.model.ClusterTask;
+
+import java.util.List;
 
 /**
  * Created by feir4 on 2018/4/29.
@@ -8,8 +11,10 @@ import com.recommend.operation.core.dao.model.ClusterTask;
 public interface IClusterSV {
 
     /**
-     * 新建任务
+     * create a task
      * @author zhanggh
+     * @param task task with it's information
+     * @return new task's ID
      */
     public Integer createTask(ClusterTask task) throws Exception;
 
@@ -17,24 +22,30 @@ public interface IClusterSV {
      * 修改任务
      * @author zhanggh
      */
-    public void updateTask(ClusterTask task);
+    public int updateTask(ClusterTask task);
 
     /**
-     * 删除任务
+     * delete a task by taskId
      * @author zhanggh
+     * @param taskId task's Id
+     * @return del count
      */
-    public void deleteTask(Integer taskId);
+    public int deleteTask(Integer taskId);
 
     /**
-     * 执行任务计算过程
+     * excuse a task by id
      * @author zhanggh
+     * @param taskId task's id
      */
     public void excuseTask(Integer taskId);
 
     /**
      * 导入参考属性
+     * @author zhanggh
+     * @param attrList ArrayList of Cluster Attribute
+     * @return import records count
      */
-    public void importAttribute();
+    public int importAttribute(List<ClusterAttr> attrList) throws Exception;
 
     /**
      * 新增实例
