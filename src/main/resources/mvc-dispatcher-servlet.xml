@@ -12,7 +12,7 @@
         ">
 
     <!-- 扫描所有的 controller -->
-    <context:component-scan base-package="com.recommend.operation.core"/>
+    <!--<context:component-scan base-package="com.recommend.operation.core"/>-->
 
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="true">

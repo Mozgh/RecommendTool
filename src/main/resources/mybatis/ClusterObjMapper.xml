@@ -7,7 +7,7 @@
     <result column="task_id" jdbcType="INTEGER" property="taskId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="is_center" jdbcType="INTEGER" property="isCenter" />
-    <result column="center_id" jdbcType="INTEGER" property="centerId" />
+    <result column="centerId" jdbcType="INTEGER" property="centerId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, mongo_id, task_id, name, is_center, center_id
+    id, mongo_id, task_id, name, is_center, centerId
   </sql>
   <select id="selectByExample" parameterType="com.recommend.operation.core.dao.model.ClusterObjExample" resultMap="BaseResultMap">
     select
@@ -103,7 +103,7 @@
   </delete>
   <insert id="insert" parameterType="com.recommend.operation.core.dao.model.ClusterObj">
     insert into cluster_obj (id, mongo_id, task_id, 
-      name, is_center, center_id
+      name, is_center, centerId
       )
     values (#{id,jdbcType=INTEGER}, #{mongoId,jdbcType=VARCHAR}, #{taskId,jdbcType=INTEGER}, 
       #{name,jdbcType=VARCHAR}, #{isCenter,jdbcType=INTEGER}, #{centerId,jdbcType=INTEGER}
@@ -128,7 +128,7 @@
         is_center,
       </if>
       <if test="centerId != null">
-        center_id,
+        centerId,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -177,7 +177,7 @@
         is_center = #{record.isCenter,jdbcType=INTEGER},
       </if>
       <if test="record.centerId != null">
-        center_id = #{record.centerId,jdbcType=INTEGER},
+        centerId = #{record.centerId,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -191,7 +191,7 @@
       task_id = #{record.taskId,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       is_center = #{record.isCenter,jdbcType=INTEGER},
-      center_id = #{record.centerId,jdbcType=INTEGER}
+      centerId = #{record.centerId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -212,7 +212,7 @@
         is_center = #{isCenter,jdbcType=INTEGER},
       </if>
       <if test="centerId != null">
-        center_id = #{centerId,jdbcType=INTEGER},
+        centerId = #{centerId,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -223,7 +223,7 @@
       task_id = #{taskId,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       is_center = #{isCenter,jdbcType=INTEGER},
-      center_id = #{centerId,jdbcType=INTEGER}
+      centerId = #{centerId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
