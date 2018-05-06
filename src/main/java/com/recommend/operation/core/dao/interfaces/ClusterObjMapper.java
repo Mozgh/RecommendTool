@@ -4,7 +4,9 @@ import com.recommend.operation.core.dao.model.ClusterObj;
 import com.recommend.operation.core.dao.model.ClusterObjExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface ClusterObjMapper {
     long countByExample(ClusterObjExample example);
 

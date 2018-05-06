@@ -434,52 +434,62 @@ public class ClusterObjExample {
             return (Criteria) this;
         }
 
-        public Criteria andCenterIdEqualTo(Integer value) {
+        public Criteria andCenterIdEqualTo(String value) {
             addCriterion("center_id =", value, "centerId");
             return (Criteria) this;
         }
 
-        public Criteria andCenterIdNotEqualTo(Integer value) {
+        public Criteria andCenterIdNotEqualTo(String value) {
             addCriterion("center_id <>", value, "centerId");
             return (Criteria) this;
         }
 
-        public Criteria andCenterIdGreaterThan(Integer value) {
+        public Criteria andCenterIdGreaterThan(String value) {
             addCriterion("center_id >", value, "centerId");
             return (Criteria) this;
         }
 
-        public Criteria andCenterIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andCenterIdGreaterThanOrEqualTo(String value) {
             addCriterion("center_id >=", value, "centerId");
             return (Criteria) this;
         }
 
-        public Criteria andCenterIdLessThan(Integer value) {
+        public Criteria andCenterIdLessThan(String value) {
             addCriterion("center_id <", value, "centerId");
             return (Criteria) this;
         }
 
-        public Criteria andCenterIdLessThanOrEqualTo(Integer value) {
+        public Criteria andCenterIdLessThanOrEqualTo(String value) {
             addCriterion("center_id <=", value, "centerId");
             return (Criteria) this;
         }
 
-        public Criteria andCenterIdIn(List<Integer> values) {
+        public Criteria andCenterIdLike(String value) {
+            addCriterion("center_id like", value, "centerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCenterIdNotLike(String value) {
+            addCriterion("center_id not like", value, "centerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCenterIdIn(List<String> values) {
             addCriterion("center_id in", values, "centerId");
             return (Criteria) this;
         }
 
-        public Criteria andCenterIdNotIn(List<Integer> values) {
+        public Criteria andCenterIdNotIn(List<String> values) {
             addCriterion("center_id not in", values, "centerId");
             return (Criteria) this;
         }
 
-        public Criteria andCenterIdBetween(Integer value1, Integer value2) {
+        public Criteria andCenterIdBetween(String value1, String value2) {
             addCriterion("center_id between", value1, value2, "centerId");
             return (Criteria) this;
         }
 
-        public Criteria andCenterIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andCenterIdNotBetween(String value1, String value2) {
             addCriterion("center_id not between", value1, value2, "centerId");
             return (Criteria) this;
         }

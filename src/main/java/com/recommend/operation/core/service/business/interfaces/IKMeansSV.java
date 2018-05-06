@@ -1,21 +1,27 @@
 package com.recommend.operation.core.service.business.interfaces;
 
+import com.recommend.operation.core.dao.model.ClusterAttr;
+import com.recommend.operation.core.dao.mongo.bean.ClusterEntityBean;
+
+import java.util.List;
+
 /**
  * @author zhanggh
  */
 public interface IKMeansSV {
 
     /**
-     * 设置聚类中心数
+     * init cluster centers
+     * @param count count of cluster
      * @author zhanggh
      */
-    public void setCenterCount();
+    public void initCenter(int count);
 
     /**
      * 计算距离
      * @author zhanggh
      */
-    public void calcDistence();
+    public double calcDistence(ClusterEntityBean entity1, ClusterEntityBean entity2, List<ClusterAttr> attrList);
 
     /**
      * 计算距离/相异度
@@ -26,7 +32,7 @@ public interface IKMeansSV {
      * 修改聚类中心
      * @author zhanggh
      */
-    public void updateCenter();
+    public boolean updateCenter(String oldCenterId, String newCenterId);
 
     /**
      * 将各点分配到各聚类中心
@@ -34,9 +40,4 @@ public interface IKMeansSV {
      */
     public void assignPoints();
 
-    /**
-     * 初始化聚类中心
-     * @author zhanggh
-     */
-    public void initCenters();
 }

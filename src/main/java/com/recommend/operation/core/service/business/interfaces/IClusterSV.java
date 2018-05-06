@@ -2,6 +2,7 @@ package com.recommend.operation.core.service.business.interfaces;
 
 import com.recommend.operation.core.dao.model.ClusterAttr;
 import com.recommend.operation.core.dao.model.ClusterTask;
+import com.recommend.operation.core.dao.mongo.bean.ClusterEntityBean;
 
 import java.util.List;
 
@@ -48,10 +49,12 @@ public interface IClusterSV {
     public int importAttribute(List<ClusterAttr> attrList) throws Exception;
 
     /**
-     * 新增实例
+     * create entity batch
+     * @param entityList List of Cluster Entity
+     * @return entity count imported
      * @author zhanggh
      */
-    public void createObject();
+    public int importEntity(List<ClusterEntityBean> entityList);
 
     /**
      * 获取推荐结果，根据传入ID获取推荐结果

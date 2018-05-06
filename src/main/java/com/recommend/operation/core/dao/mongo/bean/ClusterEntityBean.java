@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * @author zhanggh
  */
-@Document(collection = "entity")
+@Document(collection = "clusterEntity")
 public class ClusterEntityBean {
 
     /**
@@ -32,7 +32,7 @@ public class ClusterEntityBean {
      * 1--is center
      * 0--is not
      */
-    private int isCenter;
+    private Integer isCenter;
 
     /**
      * the center id which this entity belong to
@@ -44,7 +44,7 @@ public class ClusterEntityBean {
      * key--attribute's code
      * value--attribute's value
      */
-    private Map<String, String> attrValue;
+    private Map<String, Object> attrValue;
 
     /**
      * a map of attributes' code and type
@@ -52,6 +52,11 @@ public class ClusterEntityBean {
      * value--attribute's type 1--float 2--boolean 3--string
      */
     private Map<String, String> attrType;
+
+    /**
+     * dissimilarity degree of this entity
+     */
+    private Double dissimilarity;
 
     public String getId() {
         return id;
@@ -77,11 +82,11 @@ public class ClusterEntityBean {
         this.name = name;
     }
 
-    public int getIsCenter() {
+    public Integer getIsCenter() {
         return isCenter;
     }
 
-    public void setIsCenter(int isCenter) {
+    public void setIsCenter(Integer isCenter) {
         this.isCenter = isCenter;
     }
 
@@ -93,11 +98,11 @@ public class ClusterEntityBean {
         this.centerId = centerId;
     }
 
-    public Map<String, String> getAttrValue() {
+    public Map<String, Object> getAttrValue() {
         return attrValue;
     }
 
-    public void setAttrValue(Map<String, String> attrValue) {
+    public void setAttrValue(Map<String, Object> attrValue) {
         this.attrValue = attrValue;
     }
 
@@ -107,5 +112,13 @@ public class ClusterEntityBean {
 
     public void setAttrType(Map<String, String> attrType) {
         this.attrType = attrType;
+    }
+
+    public Double getDissimilarity() {
+        return dissimilarity;
+    }
+
+    public void setDissimilarity(Double dissimilarity) {
+        this.dissimilarity = dissimilarity;
     }
 }

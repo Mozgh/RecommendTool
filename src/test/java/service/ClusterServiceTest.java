@@ -2,6 +2,7 @@ package service;
 
 import com.recommend.operation.core.dao.model.ClusterAttr;
 import com.recommend.operation.core.dao.model.ClusterTask;
+import com.recommend.operation.core.dao.mongo.bean.ClusterEntityBean;
 import com.recommend.operation.core.service.business.interfaces.IClusterSV;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author zhanggh
@@ -78,4 +81,27 @@ public class ClusterServiceTest {
         System.out.println("import count: " + count);
     }
 
+    @Test
+    public void importEntitys() {
+        ClusterEntityBean entity = new ClusterEntityBean();
+        Map<String, String> attrType = new HashMap<>();
+        attrType.put("genre", "3");
+        attrType.put("rating", "1");
+
+        Map<String, Object> attrValue = new HashMap<>();
+        attrValue.put("genre", 3);
+        attrValue.put("rating", 2);
+
+        entity.setAttrType(attrType);
+        entity.setAttrValue(attrValue);
+        entity.setIsCenter(0);
+        entity.setTaskId(1001);
+        entity.setName("1");
+
+        List<ClusterEntityBean> entityList = new ArrayList<>();
+        entityList.add(entity);
+
+        int count = clusterSV.importEntity(entityList);
+        System.out.println(count);
+    }
 }

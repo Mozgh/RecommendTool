@@ -11,7 +11,7 @@ public class ClusterObj {
 
     private Integer isCenter;
 
-    private Integer centerId;
+    private String centerId;
 
     public Integer getId() {
         return id;
@@ -53,11 +53,11 @@ public class ClusterObj {
         this.isCenter = isCenter;
     }
 
-    public Integer getCenterId() {
+    public String getCenterId() {
         return centerId;
     }
 
-    public void setCenterId(Integer centerId) {
+    public void setCenterId(String centerId) {
         this.centerId = centerId;
     }
 }

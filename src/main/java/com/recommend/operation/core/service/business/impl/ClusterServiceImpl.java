@@ -1,13 +1,20 @@
 package com.recommend.operation.core.service.business.impl;
 
 import com.recommend.operation.core.dao.interfaces.ClusterAttrMapper;
+import com.recommend.operation.core.dao.interfaces.ClusterObjMapper;
 import com.recommend.operation.core.dao.interfaces.ClusterTaskMapper;
 import com.recommend.operation.core.dao.model.ClusterAttr;
+import com.recommend.operation.core.dao.model.ClusterObj;
 import com.recommend.operation.core.dao.model.ClusterTask;
+import com.recommend.operation.core.dao.mongo.bean.ClusterEntityBean;
+import com.recommend.operation.core.dao.mongo.interfaces.ClusterEntityDao;
 import com.recommend.operation.core.service.business.interfaces.IClusterSV;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -23,6 +30,12 @@ public class ClusterServiceImpl implements IClusterSV {
 
     @Resource
     private ClusterAttrMapper attrMapper;
+
+    @Resource
+    private ClusterObjMapper objMapper;
+
+    @Autowired
+    private ClusterEntityDao entityDao;
 
     private Logger logger = Logger.getLogger(ClusterServiceImpl.class);
 
@@ -78,8 +91,40 @@ public class ClusterServiceImpl implements IClusterSV {
     }
 
     @Override
-    public void createObject() {
+    public int importEntity(List<ClusterEntityBean> entityList) {
+        int importCount = 0;
 
+        for (ClusterEntityBean entity : entityList) {
+            ClusterObj obj = new ClusterObj();
+            int insert = 0;
+            try {
+                //insert into mongodb
+               String mongoId =  entityDao.insertEntity(entity);
+               if (!StringUtils.isEmpty(mongoId)) {
+                   obj.setMongoId(mongoId);
+               }
+            } catch(Exception e) {
+                logger.error("Entity info insert into mongodb failed Name:" + entity.getName());
+                logger.error(e.getMessage());
+            }
+
+            try {
+                //insert into mysql
+                obj.setCenterId(entity.getCenterId());
+                obj.setIsCenter(entity.getIsCenter());
+                obj.setName(entity.getName());
+                obj.setTaskId(entity.getTaskId());
+
+                insert = objMapper.insert(obj);
+            } catch(Exception e) {
+                logger.error("Entity info insert into mysql failed MongoID:" + obj.getId());
+                e.printStackTrace();
+            }
+            importCount += insert;
+        }
+        logger.info("import entity count: " + importCount);
+
+        return importCount;
     }
 
     @Override

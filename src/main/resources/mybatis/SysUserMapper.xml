@@ -99,13 +99,13 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.recommend.operation.core.dao.model.SysUser">
+  <insert id="insert" parameterType="com.recommend.operation.core.dao.model.SysUser"  useGeneratedKeys="true" keyProperty="id">
     insert into sys_user (id, password, name, 
       email)
     values (#{id,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.recommend.operation.core.dao.model.SysUser">
+  <insert id="insertSelective" parameterType="com.recommend.operation.core.dao.model.SysUser"  useGeneratedKeys="true" keyProperty="id">
     insert into sys_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

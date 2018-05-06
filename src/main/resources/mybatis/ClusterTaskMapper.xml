@@ -103,7 +103,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.recommend.operation.core.dao.model.ClusterTask">
+  <insert id="insert" parameterType="com.recommend.operation.core.dao.model.ClusterTask"  useGeneratedKeys="true" keyProperty="id">
     insert into cluster_task (id, user_id, name, 
       method, describes, center, 
       state, del_flag)
@@ -111,7 +111,7 @@
       #{method,jdbcType=INTEGER}, #{describes,jdbcType=VARCHAR}, #{center,jdbcType=INTEGER}, 
       #{state,jdbcType=INTEGER}, #{delFlag,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.recommend.operation.core.dao.model.ClusterTask">
+  <insert id="insertSelective" parameterType="com.recommend.operation.core.dao.model.ClusterTask"  useGeneratedKeys="true" keyProperty="id">
     insert into cluster_task
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
