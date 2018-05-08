@@ -32,7 +32,7 @@ public interface IKMeansSV {
      * 修改聚类中心
      * @author zhanggh
      */
-    public boolean updateCenter(String oldCenterId, String newCenterId);
+    public boolean updateCenter();
 
     /**
      * 将各点分配到各聚类中心
