@@ -1,10 +1,13 @@
 package com.recommend.operation.core.service.business.impl;
 
 import com.recommend.operation.core.dao.model.ClusterAttr;
+import com.recommend.operation.core.dao.model.ClusterTask;
 import com.recommend.operation.core.dao.mongo.bean.ClusterEntityBean;
+import com.recommend.operation.core.dao.mongo.interfaces.ClusterEntityDao;
 import com.recommend.operation.core.service.business.interfaces.IKMeansSV;
 import com.recommend.operation.core.util.Cluster;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
 import java.util.*;
@@ -18,22 +21,24 @@ public class KMeansServiceImpl implements IKMeansSV {
 
     private List<Cluster> clusters = new ArrayList<>();
 
-    private List<ClusterEntityBean> entityList = new ArrayList<>();
+    private Map<String, ClusterEntityBean> entityMap = new HashMap<>();
 
     private Map<String, ClusterEntityBean> centers = new HashMap<>();
 
     private List<ClusterAttr> attrList;
 
+    @Autowired
+    ClusterEntityDao clusterEntityDao;
 
     /**
+     * @param centerCount init center count
+     * @param attrList    attribute list referenced
+     * @param entityMap   entity Map, key-entityId, value-entity
      * @author zhanggh
-     * @param centerCount   init center count
-     * @param attrList      attribute list referenced
-     * @param entityList    cluster entity list
      */
-    public KMeansServiceImpl(int centerCount, List<ClusterAttr> attrList, List<ClusterEntityBean> entityList) {
+    public KMeansServiceImpl(int centerCount, List<ClusterAttr> attrList, Map<String, ClusterEntityBean> entityMap) {
         this.attrList = attrList;
-        this.entityList = entityList;
+        this.entityMap = entityMap;
         this.initCenter(centerCount);
     }
 
@@ -41,14 +46,14 @@ public class KMeansServiceImpl implements IKMeansSV {
     public void initCenter(int count) {
         logger.info("[INIT] init cluster center : count = " + count);
         for (int i = 0; i < count; i++) {
-            ClusterEntityBean entity = entityList.get(entityList.size() / count * (i + 1));
+            ClusterEntityBean entity = entityMap.get(entityMap.size() / count * (i + 1));
             Map<String, Double> entityId = new HashMap<>();
             entityId.put(entity.getId(), 0D);
             entity.setCenterId(entity.getId());
             entity.setIsCenter(1);
             Cluster cluster = new Cluster();
             cluster.setCenterEntity(entity);
-            cluster.setEntityId(entityId);
+            cluster.setEntityMap(entityId);
 
             centers.put(entity.getId(), entity);
             clusters.add(cluster);
@@ -68,8 +73,8 @@ public class KMeansServiceImpl implements IKMeansSV {
         double baseValue = 0F;
         for (ClusterAttr attr : attrList) {
             try {
-                entityValue = (Float)entity.getAttrValue().get(attr.getCode());
-                baseValue = (Float)base.getAttrValue().get(attr.getCode());
+                entityValue = entity.getAttrValue().get(attr.getCode());
+                baseValue = base.getAttrValue().get(attr.getCode());
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -85,63 +90,82 @@ public class KMeansServiceImpl implements IKMeansSV {
     }
 
     @Override
-    public void pointsCenter() {
+    public boolean updateCenter(Cluster cluster) {
+        logger.info("[update] update clusters' center begin.");
+        logger.info("cluster center current: " + cluster.getCenterEntity().getId());
+        logger.info("");
+        Double minDistance = null;
+        String nextCenterId = null;
 
-    }
+        ClusterEntityBean nextCenter = new ClusterEntityBean();
+        nextCenter.setAttrValue(cluster.getAttrValueMap());
+        //计算下一中心点到本中心点的距离
+        Double nextCenterDistance = calcDistence(nextCenter, cluster.getCenterEntity(), attrList);
 
-    @Override
-    public boolean updateCenter() {
-        for (Cluster cluster : clusters) {
-            Double min_distance = null;
-
-            ClusterEntityBean nextCenter = new ClusterEntityBean();
-//            Double nextCenterDistance = calcDistence(, cluster.getCenterEntity(), attrList);
-
-            Iterator<String> entityIds = cluster.getEntityId().keySet().iterator();
-            for (Iterator<String> it = entityIds; it.hasNext(); ) {
-                String entityId = it.next();
-                for (ClusterAttr attr: attrList) {
-
-                }
-
-
+        //寻找与本中心点距离和nextCenterDistance最接近的点
+        Set<String> idSet = cluster.getEntityMap().keySet();
+        for (String id : idSet) {
+            Double distance = cluster.getEntityMap().get(id) - nextCenterDistance;
+            if (null != minDistance || distance < minDistance) {
+                minDistance = distance;
+                nextCenterId = id;
+            }
+        }
+        //最接近的点即为下一个聚类中心，修改聚类的中心实体，entityMap清空，等待下次分配
+        if (StringUtils.isEmpty(nextCenterId)) {
+            logger.error("error!");
+        } else {
+            //如果计算得到的下一个聚类中心和当前中心相同，说明已不能再修改，返回false
+            if (nextCenterId.equals(cluster.getCenterEntity().getCenterId())) {
+                logger.info("final center: " + nextCenterId);
+                return false;
+            } else {
+                //如果聚类中心发生了变换，返回true
+                cluster.setCenterEntity(entityMap.get(nextCenterId));
+                cluster.getEntityMap().clear();
+                logger.info("new center: " + nextCenterId);
+                return true;
             }
         }
 
-        return false;
+        return true;
     }
 
     @Override
     public void assignPoints() {
 
         logger.info("[ASSIGN] assign entities start");
-        for (ClusterEntityBean entity: entityList) {
-            Double distance = null;
-            String center = null;
 
-            for (Cluster cluster: clusters) {
+        Set<String> entityIdIter = entityMap.keySet();
+
+        for (String entityId : entityIdIter) {
+            ClusterEntityBean entity = entityMap.get(entityId);
+            Double distance = null;
+            String centerId = null;
+
+            for (Cluster cluster : clusters) {
                 Double newDistance = calcDistence(entity, cluster.getCenterEntity(), attrList);
                 if (null == distance || newDistance < distance) {
                     distance = newDistance;
-                    center = cluster.getCenterEntity().getId();
+                    centerId = cluster.getCenterEntity().getId();
                 }
             }
 
-            entity.setCenterId(center);
+            entity.setCenterId(centerId);
             entity.setDissimilarity(distance);
-            for (Cluster cluster: clusters) {
-                if (center.equals(cluster.getCenterEntity().getId())) {
-                    cluster.getEntityId().put(entity.getId(), distance);
+            for (Cluster cluster : clusters) {
+                if (centerId.equals(cluster.getCenterEntity().getId())) {
+                    cluster.getEntityMap().put(entity.getId(), distance);
                 }
                 Iterator<String> attrCodes = cluster.getAttrValueMap().keySet().iterator();
 
                 Double value;
-                for (ClusterAttr attr: attrList) {
+                for (ClusterAttr attr : attrList) {
                     switch (attr.getType()) {
                         case 1:
                             value = cluster.getAttrValueMap().get(attr.getCode());
-                            value += Double.parseDouble(entity.getAttrValue().get(attr.getCode()).toString());
-                            value = value / cluster.getEntityId().size();
+                            value += entity.getAttrValue().get(attr.getCode());
+                            value = value / cluster.getEntityMap().size();
                             cluster.getAttrValueMap().put(attr.getCode(), value);
                             break;
                         case 2:
@@ -162,18 +186,48 @@ public class KMeansServiceImpl implements IKMeansSV {
                 }
             }
 
-            logger.info("assign entity(" + entity.getId() + ") to cluster(center:" + center + ")");
+            logger.info("assign entity(" + entity.getId() + ") to cluster(center:" + centerId + ")");
         }
 
         logger.info("[ASSIGN] assign entities end");
     }
 
-    public List<ClusterEntityBean> getEntityList() {
-        return entityList;
+    @Override
+    public void execute(ClusterTask task) {
+        this.initCenter(task.getCenter());
+        boolean notFinish = true;
+        while (notFinish) {
+            this.assignPoints();
+            notFinish = false;
+            //当所有聚类更新中心都返回false时，notFinish为false
+            for (Cluster cluster : clusters) {
+                boolean update = this.updateCenter(cluster);
+                update = !update;
+                notFinish = notFinish | update;
+            }
+        }
+        this.syncEntityData();
     }
 
-    public void setEntityList(List<ClusterEntityBean> entityList) {
-        this.entityList = entityList;
+    public int syncEntityData() {
+        logger.info("[sync] sync entity data begin.");
+        int updateCount = 0;
+
+        Set<String> entityIdSet = entityMap.keySet();
+        for (String entityId : entityIdSet) {
+            updateCount += clusterEntityDao.updateEntity(entityMap.get(entityId));
+        }
+
+        logger.info("[sync] sync data end : " + updateCount + "/" + entityMap.size());
+        return updateCount;
+    }
+
+    public Map<String, ClusterEntityBean> getEntityList() {
+        return entityMap;
+    }
+
+    public void setEntityList(Map<String, ClusterEntityBean> entityList) {
+        this.entityMap = entityList;
     }
 
     public Map<String, ClusterEntityBean> getCenters() {

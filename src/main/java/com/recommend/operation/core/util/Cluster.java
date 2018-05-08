@@ -1,9 +1,7 @@
 package com.recommend.operation.core.util;
 
-import com.recommend.operation.core.dao.model.ClusterAttr;
 import com.recommend.operation.core.dao.mongo.bean.ClusterEntityBean;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,18 +13,18 @@ public class Cluster {
      * key-value Map of entities in this cluster
      * key-entityId, value-distance from last center
      */
-    private Map<String, Double> entity;
+    private Map<String, Double> entityMap;
 
     private ClusterEntityBean centerEntity;
 
     private Map<String, Double> attrValueMap;
 
-    public Map<String, Double> getEntityId() {
-        return entity;
+    public Map<String, Double> getEntityMap() {
+        return entityMap;
     }
 
-    public void setEntityId(Map<String, Double> entity) {
-        this.entity = entity;
+    public void setEntityMap(Map<String, Double> entityMap) {
+        this.entityMap = entityMap;
     }
 
     public ClusterEntityBean getCenterEntity() {
