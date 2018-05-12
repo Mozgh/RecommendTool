@@ -88,9 +88,9 @@ public class ClusterServiceTest {
         attrType.put("genre", "3");
         attrType.put("rating", "1");
 
-        Map<String, Object> attrValue = new HashMap<>();
-        attrValue.put("genre", 3);
-        attrValue.put("rating", 2);
+        Map<String, Double> attrValue = new HashMap<>();
+        attrValue.put("genre", 3D);
+        attrValue.put("rating", 2D);
 
         entity.setAttrType(attrType);
         entity.setAttrValue(attrValue);
