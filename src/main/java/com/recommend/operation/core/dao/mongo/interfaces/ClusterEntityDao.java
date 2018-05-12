@@ -4,6 +4,8 @@ import com.recommend.operation.core.dao.mongo.bean.ClusterEntityBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @author zhanggh
  */
@@ -28,5 +30,23 @@ public interface ClusterEntityDao {
      * @return cluster entity bean
      * @author zhanggh
      */
-    public ClusterEntityBean queryEntity(String id);
+    public ClusterEntityBean queryEntityById(String id);
+
+    /**
+     * query a List of Entity which is clusters' center by its' taskId
+     * @param taskId task id
+     * @return ClusterEntityBean list
+     * @throws Exception
+     * @author zhanggh
+     */
+    public List<ClusterEntityBean> queryClusterCenterList(String taskId) throws Exception;
+
+    /**
+     * query a List of Entity in a same cluster by center id
+     * @param centerId clusterCenterId
+     * @return ClusterEntityBean list
+     * @author zhanggh
+     */
+    public List<ClusterEntityBean> queryEntityListByCenter(String centerId) throws Exception;
+
 }

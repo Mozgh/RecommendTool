@@ -33,9 +33,9 @@ public class ClusterMongoTest {
         attrType.put("genre", "3");
         attrType.put("rating", "1");
 
-        Map<String, Object> attrValue = new HashMap<>();
-        attrValue.put("genre", 3);
-        attrValue.put("rating", 2);
+        Map<String, Double> attrValue = new HashMap<>();
+        attrValue.put("genre", 3D);
+        attrValue.put("rating", 2D);
 
         entity.setAttrType(attrType);
         entity.setAttrValue(attrValue);
@@ -51,7 +51,7 @@ public class ClusterMongoTest {
     @Test
     public void queryEntity() {
         String id = "5aebcca2288890047cb6061e";
-        ClusterEntityBean bean = clusterEntityDao.queryEntity(id);
+        ClusterEntityBean bean = clusterEntityDao.queryEntityById(id);
 
         System.out.println(bean.getId());
     }

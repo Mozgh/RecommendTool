@@ -1,5 +1,6 @@
 package com.recommend.operation.core.dao.mongo.impl;
 
+import com.github.pagehelper.util.StringUtil;
 import com.mongodb.WriteResult;
 import com.recommend.operation.core.dao.model.SysUserExample;
 import com.recommend.operation.core.dao.mongo.interfaces.ClusterEntityDao;
@@ -14,7 +15,10 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
+
+import java.util.List;
 
 /**
  * @author zhanggh
@@ -52,7 +56,7 @@ public class ClusterEntityDaoImpl implements ClusterEntityDao{
     }
 
     @Override
-    public ClusterEntityBean queryEntity(String id) {
+    public ClusterEntityBean queryEntityById(String id) {
         ClusterEntityBean entity;
 
         if (StringUtils.isEmpty(id)) {
@@ -64,6 +68,43 @@ public class ClusterEntityDaoImpl implements ClusterEntityDao{
             return entity;
         } else {
             return null;
+        }
+    }
+
+    @Override
+    public List<ClusterEntityBean> queryClusterCenterList(String taskId) throws Exception {
+        List<ClusterEntityBean> result = null;
+        if (StringUtils.isEmpty(taskId)) {
+            logger.error("param taskId can not be empty!");
+            return null;
+        }
+        Query query = new Query();
+        query.addCriteria(Criteria.where("taskId").is(taskId).and("isCenter").is(1));
+        result = mongoTemplate.find(query, ClusterEntityBean.class);
+
+        if (CollectionUtils.isEmpty(result)) {
+            logger.debug("task " + taskId + " don't have clusters!");
+            return null;
+        }
+        return result;
+    }
+
+    @Override
+    public List<ClusterEntityBean> queryEntityListByCenter(String centerId) throws Exception {
+        List<ClusterEntityBean> result = null;
+        if (StringUtils.isEmpty(centerId)) {
+            logger.error("param centerId can not empty!");
+            return null;
+        }
+        Query query = new Query();
+        query.addCriteria(Criteria.where("centerID").is(centerId));
+        result = mongoTemplate.find(query, ClusterEntityBean.class);
+
+        if (CollectionUtils.isEmpty(result)) {
+            logger.debug("cluster is empty -- centerId = " + centerId);
+            return null;
+        } else {
+            return result;
         }
     }
 }
