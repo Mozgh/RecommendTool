@@ -33,7 +33,7 @@ public class ClusterMongoTest {
         attrType.put("genre", "3");
         attrType.put("rating", "1");
 
-        Map<String, Double> attrValue = new HashMap<>();
+        Map<String, Object> attrValue = new HashMap<>();
         attrValue.put("genre", 3D);
         attrValue.put("rating", 2D);
 

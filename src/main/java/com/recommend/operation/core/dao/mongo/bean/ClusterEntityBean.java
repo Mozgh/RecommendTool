@@ -44,12 +44,12 @@ public class ClusterEntityBean {
      * key--attribute's code
      * value--attribute's value
      */
-    private Map<String, Double> attrValue;
+    private Map<String, Object> attrValue;
 
     /**
      * a map of attributes' code and type
      * key--attribute's code
-     * value--attribute's type 1--float 2--boolean
+     * value--attribute's type 1--double 2--boolean
      */
     private Map<String, String> attrType;
 
@@ -98,11 +98,11 @@ public class ClusterEntityBean {
         this.centerId = centerId;
     }
 
-    public Map<String, Double> getAttrValue() {
+    public Map<String, Object> getAttrValue() {
         return attrValue;
     }
 
-    public void setAttrValue(Map<String, Double> attrValue) {
+    public void setAttrValue(Map<String, Object> attrValue) {
         this.attrValue = attrValue;
     }
 

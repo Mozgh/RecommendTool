@@ -49,4 +49,6 @@ public interface ClusterEntityDao {
      */
     public List<ClusterEntityBean> queryEntityListByCenter(String centerId) throws Exception;
 
+    public List<ClusterEntityBean> queryEntityListByTaskId(Integer taskId) throws Exception;
+
 }

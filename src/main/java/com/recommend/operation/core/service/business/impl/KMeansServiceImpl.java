@@ -1,6 +1,9 @@
 package com.recommend.operation.core.service.business.impl;
 
+import com.recommend.operation.core.dao.interfaces.ClusterAttrMapper;
+import com.recommend.operation.core.dao.interfaces.ClusterTaskMapper;
 import com.recommend.operation.core.dao.model.ClusterAttr;
+import com.recommend.operation.core.dao.model.ClusterAttrExample;
 import com.recommend.operation.core.dao.model.ClusterTask;
 import com.recommend.operation.core.dao.mongo.bean.ClusterEntityBean;
 import com.recommend.operation.core.dao.mongo.interfaces.ClusterEntityDao;
@@ -8,6 +11,7 @@ import com.recommend.operation.core.service.business.interfaces.IKMeansSV;
 import com.recommend.operation.core.util.Cluster;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.*;
@@ -15,6 +19,7 @@ import java.util.*;
 /**
  * @author zhanggh
  */
+@Service
 public class KMeansServiceImpl implements IKMeansSV {
 
     private Logger logger = Logger.getLogger(KMeansServiceImpl.class);
@@ -30,23 +35,51 @@ public class KMeansServiceImpl implements IKMeansSV {
     @Autowired
     ClusterEntityDao clusterEntityDao;
 
-    /**
-     * @param centerCount init center count
-     * @param attrList    attribute list referenced
-     * @param entityMap   entity Map, key-entityId, value-entity
-     * @author zhanggh
-     */
-    public KMeansServiceImpl(int centerCount, List<ClusterAttr> attrList, Map<String, ClusterEntityBean> entityMap) {
-        this.attrList = attrList;
-        this.entityMap = entityMap;
-        this.initCenter(centerCount);
+    @Autowired
+    ClusterTaskMapper taskMapper;
+
+    @Autowired
+    ClusterAttrMapper attrMapper;
+
+
+    @Override
+    public Integer loadTask(Integer taskId) {
+        if (StringUtils.isEmpty(taskId)) {
+            logger.error("param taskId can not be empty");
+            return null;
+        }
+
+        ClusterTask task = taskMapper.selectByPrimaryKey(taskId);
+
+        if (null == task) {
+            logger.error("task is empty: taskId = " + taskId);
+        }
+
+        ClusterAttrExample example = new ClusterAttrExample();
+        example.createCriteria().andTaskIdEqualTo(taskId);
+        this.attrList = attrMapper.selectByExample(example);
+
+        try {
+            List<ClusterEntityBean> entityBeanList = clusterEntityDao.queryEntityListByTaskId(taskId);
+            for (ClusterEntityBean entity: entityBeanList) {
+                entityMap.put(entity.getId(), entity);
+            }
+            logger.info("entity data load success, count:" + entityMap.size());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        this.initCenter(task.getCenter());
+        return entityMap.size();
     }
 
     @Override
-    public void initCenter(int count) {
+    public void initCenter(Integer count) {
         logger.info("[INIT] init cluster center : count = " + count);
         for (int i = 0; i < count; i++) {
-            ClusterEntityBean entity = entityMap.get(entityMap.size() / count * (i + 1));
+            int index = entityMap.size() / count * (i + 1);
+            String key = (String) entityMap.keySet().toArray()[index];
+            ClusterEntityBean entity = entityMap.get(key);
             Map<String, Double> entityId = new HashMap<>();
             entityId.put(entity.getId(), 0D);
             entity.setCenterId(entity.getId());
@@ -65,7 +98,6 @@ public class KMeansServiceImpl implements IKMeansSV {
     @Override
     public double calcDistence(ClusterEntityBean entity, ClusterEntityBean base, List<ClusterAttr> attrList) {
         double distance = 0F;
-        Map<String, Float> entityAttrValues = new HashMap<>();
         double entityMod = 0F;
         double baseMod = 0F;
         double crossProduct = 0F;
@@ -73,8 +105,23 @@ public class KMeansServiceImpl implements IKMeansSV {
         double baseValue = 0F;
         for (ClusterAttr attr : attrList) {
             try {
-                entityValue = entity.getAttrValue().get(attr.getCode());
-                baseValue = base.getAttrValue().get(attr.getCode());
+                switch (attr.getType()) {
+                    case 1:
+                        entityValue = Double.parseDouble(entity.getAttrValue().get(attr.getCode()).toString());
+                        baseValue = Double.parseDouble(base.getAttrValue().get(attr.getCode()).toString());
+                        break;
+                    case 2:
+                    case 3:
+                        baseValue = 0D;
+                        if(entity.getAttrValue().get(attr.getCode()).equals(base.getAttrValue().get(attr.getCode()))) {
+                            entityValue = 1D;
+                        } else {
+                            entityValue = 0D;
+                        }
+                        break;
+                    default:
+                        logger.error("attr type error: entityId=" + entity.getId() + " baseId:" + base.getId() + " attribute name:" + attr.getName());
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -163,22 +210,25 @@ public class KMeansServiceImpl implements IKMeansSV {
                 for (ClusterAttr attr : attrList) {
                     switch (attr.getType()) {
                         case 1:
-                            value = cluster.getAttrValueMap().get(attr.getCode());
-                            value += entity.getAttrValue().get(attr.getCode());
+                            value = Double.parseDouble(cluster.getAttrValueMap().get(attr.getCode()).toString());
+                            value += Double.parseDouble(entity.getAttrValue().get(attr.getCode()).toString());
                             value = value / cluster.getEntityMap().size();
                             cluster.getAttrValueMap().put(attr.getCode(), value);
                             break;
                         case 2:
-                            Boolean value_b = Boolean.parseBoolean(cluster.getAttrValueMap().get(attr.getCode()).toString());
-                            Boolean value_v = Boolean.parseBoolean(entity.getAttrValue().get(attr.getCode()).toString());
-                            if (value_b) {
-                                value_v = !value_v;
+                            Boolean valueB = Boolean.parseBoolean(cluster.getAttrValueMap().get(attr.getCode()).toString());
+                            Boolean valueV = Boolean.parseBoolean(entity.getAttrValue().get(attr.getCode()).toString());
+                            if (valueB) {
+                                valueV = !valueV;
                             }
-                            if (value_v) {
-                                cluster.getAttrValueMap().put(attr.getCode(), 1D);
+                            if (valueV) {
+                                cluster.getAttrValueMap().put(attr.getCode(), true);
                             } else {
-                                cluster.getAttrValueMap().put(attr.getCode(), 0D);
+                                cluster.getAttrValueMap().put(attr.getCode(), false);
                             }
+                            break;
+                        case 3:
+                            //TODO:字符类型的属性值计算下一中心时如何处理
                             break;
                         default:
                             logger.error("attr type error!");

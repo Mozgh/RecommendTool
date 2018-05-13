@@ -18,6 +18,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -93,7 +94,7 @@ public class ClusterEntityDaoImpl implements ClusterEntityDao{
     public List<ClusterEntityBean> queryEntityListByCenter(String centerId) throws Exception {
         List<ClusterEntityBean> result = null;
         if (StringUtils.isEmpty(centerId)) {
-            logger.error("param centerId can not empty!");
+            logger.error("param centerId can not be empty!");
             return null;
         }
         Query query = new Query();
@@ -106,5 +107,21 @@ public class ClusterEntityDaoImpl implements ClusterEntityDao{
         } else {
             return result;
         }
+    }
+
+    @Override
+    public List<ClusterEntityBean> queryEntityListByTaskId(Integer taskId) throws Exception {
+        List<ClusterEntityBean> entityList = new ArrayList<>();
+
+        if (null == taskId) {
+            logger.error("param taskId can not be empty");
+            return null;
+        }
+
+        Query query = new Query();
+        query.addCriteria(Criteria.where("taskId").is(taskId));
+        entityList = mongoTemplate.find(query, ClusterEntityBean.class);
+        logger.info("taskID:" + taskId + " entity count:" + entityList.size());
+        return entityList;
     }
 }

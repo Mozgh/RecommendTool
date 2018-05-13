@@ -17,7 +17,7 @@ public class Cluster {
 
     private ClusterEntityBean centerEntity;
 
-    private Map<String, Double> attrValueMap;
+    private Map<String, Object> attrValueMap;
 
     public Map<String, Double> getEntityMap() {
         return entityMap;
@@ -35,11 +35,11 @@ public class Cluster {
         this.centerEntity = centerEntity;
     }
 
-    public Map<String, Double> getAttrValueMap() {
+    public Map<String, Object> getAttrValueMap() {
         return attrValueMap;
     }
 
-    public void setAttrValueMap(Map<String, Double> attrValueMap) {
+    public void setAttrValueMap(Map<String, Object> attrValueMap) {
         this.attrValueMap = attrValueMap;
     }
 }

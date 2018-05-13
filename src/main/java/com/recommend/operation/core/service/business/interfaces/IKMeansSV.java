@@ -13,11 +13,17 @@ import java.util.List;
 public interface IKMeansSV {
 
     /**
+     * load entity data
+     * @param taskId    task id
+     * @return count of data loaded
+     */
+    public Integer loadTask(Integer taskId);
+    /**
      * init cluster centers
      * @param count count of cluster
      * @author zhanggh
      */
-    public void initCenter(int count);
+    public void initCenter(Integer count);
 
     /**
      * 计算距离
