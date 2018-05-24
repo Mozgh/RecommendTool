@@ -1,11 +1,13 @@
 package com.recommend.operation.core.dao.mongo.impl;
 
 import com.github.pagehelper.util.StringUtil;
+import com.mongodb.BasicDBObject;
 import com.mongodb.WriteResult;
 import com.recommend.operation.core.dao.model.SysUserExample;
 import com.recommend.operation.core.dao.mongo.interfaces.ClusterEntityDao;
 import com.recommend.operation.core.dao.mongo.bean.ClusterEntityBean;
 import org.apache.log4j.Logger;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -39,7 +41,6 @@ public class ClusterEntityDaoImpl implements ClusterEntityDao{
     public String insertEntity(ClusterEntityBean entity) {
 
         mongoTemplate.insert(entity, "clusterEntity");
-
         return entity.getId();
     }
 
@@ -49,10 +50,14 @@ public class ClusterEntityDaoImpl implements ClusterEntityDao{
     }
 
     @Override
-    public int updateEntity(ClusterEntityBean entity) {
+    public int updateEntity(ClusterEntityBean entity) throws Exception{
+        Query query = new Query(Criteria.where("_id").is(entity.getId()));
         Update update = new Update();
-        update.addToSet("isCenter", entity.getIsCenter()).addToSet("dissimilarity", entity.getDissimilarity()).addToSet("centerId", entity.getCenterId());
-        WriteResult result = mongoTemplate.updateFirst(new Query(Criteria.where("id").is(entity.getId())), update, entity.getClass());
+        update.set("isCenter", entity.getIsCenter());
+        update.set("dissimilarity", entity.getDissimilarity());
+        update.set("centerId", entity.getCenterId());
+        update.set("name", entity.getName());
+        WriteResult result = mongoTemplate.upsert(query, update, ClusterEntityBean.class,"clusterEntity");
         return result.getN();
     }
 

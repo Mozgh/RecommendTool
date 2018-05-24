@@ -33,6 +33,8 @@ public interface IClusterSV {
      */
     public int deleteTask(Integer taskId);
 
+    public ClusterTask queryTaskById(Integer taskId);
+
     /**
      * excuse a task by id
      * @author zhanggh

@@ -175,6 +175,9 @@ public class ClusterServiceTest {
 
     @Test
     public void testLoadData() {
-        kMeansSV.loadTask(1001);
+        ClusterTask task = new ClusterTask();
+        task = clusterSV.queryTaskById(1001);
+        kMeansSV.execute(task);
+
     }
 }

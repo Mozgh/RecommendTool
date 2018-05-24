@@ -69,7 +69,6 @@ public class KMeansServiceImpl implements IKMeansSV {
             e.printStackTrace();
         }
 
-        this.initCenter(task.getCenter());
         return entityMap.size();
     }
 
@@ -87,7 +86,23 @@ public class KMeansServiceImpl implements IKMeansSV {
             Cluster cluster = new Cluster();
             cluster.setCenterEntity(entity);
             cluster.setEntityMap(entityId);
+            Map<String, Object> attrMap = new HashMap<>();
+            for (ClusterAttr attr: attrList) {
+                switch (attr.getType().toString()) {
+                    case "1":
+                        attrMap.put(attr.getCode(), 0D);
+                        break;
+                    case "2":
+                        attrMap.put(attr.getCode(), false);
+                        break;
+                    case "3":
+                        attrMap.put(attr.getCode(), "");
+                        break;
+                    default:
+                }
 
+            }
+            cluster.setAttrValueMap(attrMap);
             centers.put(entity.getId(), entity);
             clusters.add(cluster);
             logger.info("cluster[" + (i + 1) + "] centerId: " + entity.getId());
@@ -153,7 +168,7 @@ public class KMeansServiceImpl implements IKMeansSV {
         Set<String> idSet = cluster.getEntityMap().keySet();
         for (String id : idSet) {
             Double distance = cluster.getEntityMap().get(id) - nextCenterDistance;
-            if (null != minDistance || distance < minDistance) {
+            if (null == minDistance || distance < minDistance) {
                 minDistance = distance;
                 nextCenterId = id;
             }
@@ -201,22 +216,27 @@ public class KMeansServiceImpl implements IKMeansSV {
             entity.setCenterId(centerId);
             entity.setDissimilarity(distance);
             for (Cluster cluster : clusters) {
-                if (centerId.equals(cluster.getCenterEntity().getId())) {
+                if (null != centerId && centerId.equals(cluster.getCenterEntity().getId())) {
                     cluster.getEntityMap().put(entity.getId(), distance);
                 }
-                Iterator<String> attrCodes = cluster.getAttrValueMap().keySet().iterator();
 
-                Double value;
+                Map<String, Integer> stringAttrCounter = new HashMap<>();
                 for (ClusterAttr attr : attrList) {
                     switch (attr.getType()) {
                         case 1:
-                            value = Double.parseDouble(cluster.getAttrValueMap().get(attr.getCode()).toString());
-                            value += Double.parseDouble(entity.getAttrValue().get(attr.getCode()).toString());
-                            value = value / cluster.getEntityMap().size();
-                            cluster.getAttrValueMap().put(attr.getCode(), value);
+                            Double valueD = 0D;
+                            if (null != cluster.getAttrValueMap().get(attr.getCode())) {
+                                valueD = Double.parseDouble(cluster.getAttrValueMap().get(attr.getCode()).toString());
+                            }
+                            valueD += Double.parseDouble(entity.getAttrValue().get(attr.getCode()).toString());
+                            valueD = valueD / cluster.getEntityMap().size();
+                            cluster.getAttrValueMap().put(attr.getCode(), valueD);
                             break;
                         case 2:
-                            Boolean valueB = Boolean.parseBoolean(cluster.getAttrValueMap().get(attr.getCode()).toString());
+                            Boolean valueB = false;
+                            if (null != cluster.getAttrValueMap().get(attr.getCode())) {
+                                valueB = Boolean.parseBoolean(cluster.getAttrValueMap().get(attr.getCode()).toString());
+                            }
                             Boolean valueV = Boolean.parseBoolean(entity.getAttrValue().get(attr.getCode()).toString());
                             if (valueB) {
                                 valueV = !valueV;
@@ -229,6 +249,14 @@ public class KMeansServiceImpl implements IKMeansSV {
                             break;
                         case 3:
                             //TODO:字符类型的属性值计算下一中心时如何处理
+//                            String valueS = entity.getAttrValue().get(attr.getCode()).toString();
+//                            if (stringAttrCounter.containsKey(valueS)) {
+//                                Integer count = stringAttrCounter.get(valueS);
+//                                stringAttrCounter.put(valueS, count + 1);
+//                            } else {
+//                                stringAttrCounter.put(valueS, 1);
+//                            }
+//
                             break;
                         default:
                             logger.error("attr type error!");
@@ -244,17 +272,17 @@ public class KMeansServiceImpl implements IKMeansSV {
 
     @Override
     public void execute(ClusterTask task) {
+        this.loadTask(task.getId());
         this.initCenter(task.getCenter());
         boolean notFinish = true;
         while (notFinish) {
             this.assignPoints();
-            notFinish = false;
             //当所有聚类更新中心都返回false时，notFinish为false
+            boolean update = false;
             for (Cluster cluster : clusters) {
-                boolean update = this.updateCenter(cluster);
-                update = !update;
-                notFinish = notFinish | update;
+                update = update | this.updateCenter(cluster);
             }
+            notFinish = update;
         }
         this.syncEntityData();
     }
@@ -265,7 +293,11 @@ public class KMeansServiceImpl implements IKMeansSV {
 
         Set<String> entityIdSet = entityMap.keySet();
         for (String entityId : entityIdSet) {
-            updateCount += clusterEntityDao.updateEntity(entityMap.get(entityId));
+            try {
+                clusterEntityDao.updateEntity(entityMap.get(entityId));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         logger.info("[sync] sync data end : " + updateCount + "/" + entityMap.size());

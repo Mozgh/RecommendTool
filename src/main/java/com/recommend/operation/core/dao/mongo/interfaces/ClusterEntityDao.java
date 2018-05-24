@@ -22,7 +22,7 @@ public interface ClusterEntityDao {
 
     public void deleteEntity();
 
-    public int updateEntity(ClusterEntityBean entity);
+    public int updateEntity(ClusterEntityBean entity) throws Exception;
 
     /**
      * query a Cluster Entity by it's id.

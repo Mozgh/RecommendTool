@@ -55,4 +55,21 @@ public class ClusterMongoTest {
 
         System.out.println(bean.getId());
     }
+
+    @Test
+    public void updateEntity() {
+        ClusterEntityBean entity = clusterEntityDao.queryEntityById("5b05943d2c965c2a8c60475f");
+
+        entity.setName("upsert");
+        entity.setIsCenter(0);
+
+        int result = 0;
+        try {
+            result = clusterEntityDao.updateEntity(entity);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(result);
+    }
 }

@@ -68,6 +68,11 @@ public class ClusterServiceImpl implements IClusterSV {
     }
 
     @Override
+    public ClusterTask queryTaskById(Integer taskId) {
+        return taskMapper.selectByPrimaryKey(taskId);
+    }
+
+    @Override
     public void excuseTask(Integer taskId) {
 
     }
