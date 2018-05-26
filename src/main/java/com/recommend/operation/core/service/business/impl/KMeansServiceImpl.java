@@ -36,23 +36,11 @@ public class KMeansServiceImpl implements IKMeansSV {
     ClusterEntityDao clusterEntityDao;
 
     @Autowired
-    ClusterTaskMapper taskMapper;
-
-    @Autowired
     ClusterAttrMapper attrMapper;
 
-
-    @Override
-    public Integer loadTask(Integer taskId) {
-        if (StringUtils.isEmpty(taskId)) {
-            logger.error("param taskId can not be empty");
-            return null;
-        }
-
-        ClusterTask task = taskMapper.selectByPrimaryKey(taskId);
-
-        if (null == task) {
-            logger.error("task is empty: taskId = " + taskId);
+    private boolean loadTaskData(Integer taskId) {
+        if (null == taskId) {
+            logger.error("task id can not be null!");
         }
 
         ClusterAttrExample example = new ClusterAttrExample();
@@ -67,9 +55,9 @@ public class KMeansServiceImpl implements IKMeansSV {
             logger.info("entity data load success, count:" + entityMap.size());
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
-
-        return entityMap.size();
+        return true;
     }
 
     @Override
@@ -272,7 +260,15 @@ public class KMeansServiceImpl implements IKMeansSV {
 
     @Override
     public void execute(ClusterTask task) {
-        this.loadTask(task.getId());
+        if (null == task) {
+            logger.error("task can not be null!");
+            return;
+        }
+        boolean loaded = this.loadTaskData(task.getId());
+        if (!loaded) {
+            logger.error("load task data error!");
+            return;
+        }
         this.initCenter(task.getCenter());
         boolean notFinish = true;
         while (notFinish) {
@@ -294,7 +290,12 @@ public class KMeansServiceImpl implements IKMeansSV {
         Set<String> entityIdSet = entityMap.keySet();
         for (String entityId : entityIdSet) {
             try {
-                clusterEntityDao.updateEntity(entityMap.get(entityId));
+                Map<String, Object> queryMap = new HashMap<>();
+                queryMap.put("_id", entityId);
+                Map<String, Object> updateMap = new HashMap<>();
+                updateMap.put("isCenter", entityMap.get(entityId).getIsCenter());
+                updateMap.put("centerId", entityMap.get(entityId).getIsCenter());
+                clusterEntityDao.updateEntity(queryMap, updateMap);
             } catch (Exception e) {
                 e.printStackTrace();
             }

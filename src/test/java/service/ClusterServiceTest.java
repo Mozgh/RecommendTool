@@ -1,9 +1,13 @@
 package service;
 
+import com.recommend.operation.core.dao.interfaces.ClusterObjMapper;
 import com.recommend.operation.core.dao.model.ClusterAttr;
+import com.recommend.operation.core.dao.model.ClusterObj;
 import com.recommend.operation.core.dao.model.ClusterTask;
 import com.recommend.operation.core.dao.mongo.bean.ClusterEntityBean;
-import com.recommend.operation.core.service.business.interfaces.IClusterSV;
+import com.recommend.operation.core.service.business.interfaces.IClusterAttrSV;
+import com.recommend.operation.core.service.business.interfaces.IClusterObjectSV;
+import com.recommend.operation.core.service.business.interfaces.IClusterTaskSV;
 import com.recommend.operation.core.service.business.interfaces.IKMeansSV;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,10 +28,19 @@ import java.util.Map;
 public class ClusterServiceTest {
 
     @Autowired
-    private IClusterSV clusterSV;
+    private IClusterTaskSV clusterSV;
+
+    @Autowired
+    private IClusterObjectSV objectSV;
+
+    @Autowired
+    private IClusterAttrSV attrSV;
 
     @Autowired
     private IKMeansSV kMeansSV;
+
+    @Autowired
+    private ClusterObjMapper objMapper;
 
     @Test
     public void createTaskTest() throws Exception {
@@ -82,30 +95,15 @@ public class ClusterServiceTest {
         }
 
         System.out.println("attr count: " + attrList.size());
-        int count = clusterSV.importAttribute(attrList);
+        int count = attrSV.importAttribute(attrList);
         System.out.println("import count: " + count);
     }
 
     @Test
     public void importEntitys() {
-//        ClusterEntityBean entity = new ClusterEntityBean();
-//        Map<String, String> attrType = new HashMap<>();
-//        attrType.put("genre", "3");
-//        attrType.put("rating", "1");
-//
-//        Map<String, Object> attrValue = new HashMap<>();
-//        attrValue.put("genre", 3D);
-//        attrValue.put("rating", 2D);
-//
-//        entity.setAttrType(attrType);
-//        entity.setAttrValue(attrValue);
-//        entity.setIsCenter(0);
-//        entity.setTaskId(1001);
-//        entity.setName("1");
-
         List<ClusterEntityBean> entityList = queryClusterEntityBeans();
-
-        int count = clusterSV.importEntity(entityList);
+        int count = 0;
+        count += objectSV.importEntity(entityList);
         System.out.println(count);
     }
 
@@ -123,20 +121,20 @@ public class ClusterServiceTest {
 
         try {
             Connection conn = DriverManager.getConnection(url, username, password);
-            String sql = "select a.id,a.gender,a.occupation,a.age, b.movie_id,b.rating, c.genre  from t_user a, rating b, movie_genres c where a.id = b.user_id and b.movie_id = c.movie_id and a.id < 50";
+            String sql = "select a.id,a.gender,a.occupation,a.age, b.movie_id,b.rating from t_user a, rating b where a.id = b.user_id and a.id < 50";
 
             PreparedStatement pst = conn.prepareStatement(sql);
 
             ResultSet rst = pst.executeQuery();
             ClusterEntityBean bean;
             Map<String, String> attrType = new HashMap<>();
-            attrType.put("userId", "1");
-            attrType.put("gender", "3");
-            attrType.put("occupation", "3");
-            attrType.put("age", "1");
-            attrType.put("movie_id", "3");
-            attrType.put("rating", "1");
-            attrType.put("genre", "3");
+//            attrType.put("userId", "1");
+//            attrType.put("gender", "3");
+//            attrType.put("occupation", "3");
+//            attrType.put("age", "1");
+//            attrType.put("movie_id", "3");
+//            attrType.put("rating", "1");
+//            attrType.put("genre", "3");
 
             Map<String, Object> attrValue ;
             while(rst.next()) {
@@ -146,12 +144,12 @@ public class ClusterServiceTest {
                 int age = rst.getInt(4);
                 int movie_id = rst.getInt(5);
                 int rating = rst.getInt(6);
-                int genre = rst.getInt(7);
                 bean = new ClusterEntityBean();
                 bean.setTaskId(1001);
                 bean.setIsCenter(0);
-                bean.setName(String.valueOf(rst.getInt(1)));
-                bean.setAttrType(attrType);
+                String code = String.valueOf(userId) + String.valueOf(movie_id) + String.valueOf(rating);
+                bean.setCode(code);
+//                bean.setAttrType(attrType);
                 attrValue = new HashMap<>();
                 attrValue.put("userId", userId);
                 attrValue.put("gender", gender);
@@ -159,7 +157,6 @@ public class ClusterServiceTest {
                 attrValue.put("age", age);
                 attrValue.put("movie_id", movie_id);
                 attrValue.put("rating", rating);
-                attrValue.put("genre", genre);
                 bean.setAttrValue(attrValue);
 
                 beanList.add(bean);
@@ -179,5 +176,18 @@ public class ClusterServiceTest {
         task = clusterSV.queryTaskById(1001);
         kMeansSV.execute(task);
 
+    }
+
+    @Test
+    public void testQueryObj() {
+        ClusterObj obj = new ClusterObj();
+
+        obj.setTaskId(1001);
+        obj.setCode("code");
+        obj.setMongoId("testmongodb");
+        obj.setCenterId("");
+        obj.setIsCenter(0);
+        int count = objMapper.insert(obj);
+        System.out.println(count);
     }
 }

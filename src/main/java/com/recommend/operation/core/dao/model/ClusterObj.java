@@ -7,7 +7,7 @@ public class ClusterObj {
 
     private Integer taskId;
 
-    private String name;
+    private String code;
 
     private Integer isCenter;
 
@@ -37,12 +37,12 @@ public class ClusterObj {
         this.taskId = taskId;
     }
 
-    public String getName() {
-        return name;
+    public String getCode() {
+        return code;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public Integer getIsCenter() {

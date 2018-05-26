@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by feir4 on 2018/4/29.
  */
-public interface IClusterSV {
+public interface IClusterTaskSV {
 
     /**
      * create a task
@@ -42,25 +42,7 @@ public interface IClusterSV {
      */
     public void excuseTask(Integer taskId);
 
-    /**
-     * 导入参考属性
-     * @author zhanggh
-     * @param attrList ArrayList of Cluster Attribute
-     * @return import records count
-     */
-    public int importAttribute(List<ClusterAttr> attrList) throws Exception;
+    public Integer openTask(Integer taskId);
 
-    /**
-     * create entity batch
-     * @param entityList List of Cluster Entity
-     * @return entity count imported
-     * @author zhanggh
-     */
-    public int importEntity(List<ClusterEntityBean> entityList);
-
-    /**
-     * 获取推荐结果，根据传入ID获取推荐结果
-     * @author zhanggh
-     */
-    public void getRecommendResult();
+    public Integer closeTask(Integer taskId);
 }

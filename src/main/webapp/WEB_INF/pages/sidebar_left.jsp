@@ -9,7 +9,7 @@
 <!-- sidebar start -->
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta code="viewport" content="width=device-width, initial-scale=1.0">
     <title>后台模板</title>
     <link rel="stylesheet" href="/Recommend/statics/css/amazeui.css" />
     <link rel="stylesheet" href="/Recommend/statics/css/core.css" />

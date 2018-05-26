@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author zhanggh
@@ -22,7 +23,7 @@ public interface ClusterEntityDao {
 
     public void deleteEntity();
 
-    public int updateEntity(ClusterEntityBean entity) throws Exception;
+    public int updateEntity(Map<String, Object> queryMap, Map<String, Object> udpateMap) throws Exception;
 
     /**
      * query a Cluster Entity by it's id.
@@ -31,6 +32,8 @@ public interface ClusterEntityDao {
      * @author zhanggh
      */
     public ClusterEntityBean queryEntityById(String id);
+
+    public List<ClusterEntityBean> queryEntityListByCode(String code);
 
     /**
      * query a List of Entity which is clusters' center by its' taskId

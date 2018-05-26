@@ -23,9 +23,9 @@ public class ClusterEntityBean {
     private int taskId;
 
     /**
-     * entity name
+     * entity code
      */
-    private String name;
+    private String code;
 
     /**
      * if this entity is a center
@@ -45,13 +45,6 @@ public class ClusterEntityBean {
      * value--attribute's value
      */
     private Map<String, Object> attrValue;
-
-    /**
-     * a map of attributes' code and type
-     * key--attribute's code
-     * value--attribute's type 1--double 2--boolean
-     */
-    private Map<String, String> attrType;
 
     /**
      * dissimilarity degree of this entity
@@ -74,12 +67,12 @@ public class ClusterEntityBean {
         this.taskId = taskId;
     }
 
-    public String getName() {
-        return name;
+    public String getCode() {
+        return code;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public Integer getIsCenter() {
@@ -104,14 +97,6 @@ public class ClusterEntityBean {
 
     public void setAttrValue(Map<String, Object> attrValue) {
         this.attrValue = attrValue;
-    }
-
-    public Map<String, String> getAttrType() {
-        return attrType;
-    }
-
-    public void setAttrType(Map<String, String> attrType) {
-        this.attrType = attrType;
     }
 
     public Double getDissimilarity() {

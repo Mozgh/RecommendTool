@@ -2,14 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ce09c4f-4716-4c06-92b8-dd2047107c22" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/ClusterAttrServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/ClusterObjectServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IClusterAttrSV.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IClusterObjectSV.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/model/ClusterObj.java" afterPath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/model/ClusterObj.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/model/ClusterObjExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/model/ClusterObjExample.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/bean/ClusterEntityBean.java" afterPath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/bean/ClusterEntityBean.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/impl/ClusterEntityDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/impl/ClusterEntityDaoImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/interfaces/ClusterEntityDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/interfaces/ClusterEntityDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/ClusterServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/ClusterServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/KMeansServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/KMeansServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IClusterSV.java" afterPath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IClusterSV.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IKMeansSV.java" afterPath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IKMeansSV.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mybatis/ClusterObjMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/ClusterObjMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/chart_columnar.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/chart_columnar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/chart_line.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/chart_line.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/chart_pie.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/chart_pie.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/form_basic.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/form_basic.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/form_validate.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/form_validate.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/index.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/login.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/sidebar_left.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/sidebar_left.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/table_basic.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/table_basic.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/table_complete.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/table_complete.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/typography.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/typography.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB_INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB_INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/service/ClusterMongoTest.java" afterPath="$PROJECT_DIR$/src/test/java/service/ClusterMongoTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/service/ClusterServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/service/ClusterServiceTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/ClusterServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/ClusterTaskServiceImpl.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IClusterSV.java" afterPath="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IClusterTaskSV.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -43,11 +64,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="ClusterServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/ClusterServiceImpl.java">
+      <file leaf-file-name="ClusterEntityDaoImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/impl/ClusterEntityDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1659">
-              <caret line="98" column="21" lean-forward="false" selection-start-line="98" selection-start-column="21" selection-end-line="98" selection-end-column="21" />
+            <state relative-caret-position="2436">
+              <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="false" />
               </folding>
@@ -58,8 +79,8 @@
       <file leaf-file-name="ClusterEntityDao.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/interfaces/ClusterEntityDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="24" column="14" lean-forward="false" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
+            <state relative-caret-position="630">
+              <caret line="35" column="35" lean-forward="false" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="false" />
               </folding>
@@ -67,133 +88,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClusterEntityDaoImpl.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/impl/ClusterEntityDaoImpl.java">
+      <file leaf-file-name="ClusterObj.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/model/ClusterObj.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="75" column="24" lean-forward="true" selection-start-line="75" selection-start-column="24" selection-end-line="75" selection-end-column="24" />
+            <state relative-caret-position="369">
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IKMeansSV.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IKMeansSV.java">
+      <file leaf-file-name="ClusterObjectServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/ClusterObjectServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="945">
-              <caret line="50" column="16" lean-forward="false" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+            <state relative-caret-position="978">
+              <caret line="98" column="9" lean-forward="false" selection-start-line="98" selection-start-column="9" selection-end-line="98" selection-end-column="9" />
               <folding>
-                <element signature="imports" expanded="false" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClusterMongoTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/service/ClusterMongoTest.java">
+      <file leaf-file-name="IClusterTaskSV.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IClusterTaskSV.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1197">
-              <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+            <state relative-caret-position="705">
+              <caret line="46" column="19" lean-forward="false" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KMeansServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/KMeansServiceImpl.java">
+      <file leaf-file-name="IClusterObjectSV.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IClusterObjectSV.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5922">
-              <caret line="296" column="29" lean-forward="false" selection-start-line="296" selection-start-column="29" selection-end-line="296" selection-end-column="29" />
-              <folding>
-                <element signature="e#12039#12040#0" expanded="false" />
-                <element signature="e#12071#12072#0" expanded="false" />
-                <element signature="e#12147#12148#0" expanded="false" />
-                <element signature="e#12190#12191#0" expanded="false" />
-                <element signature="e#12248#12249#0" expanded="false" />
-                <element signature="e#12278#12279#0" expanded="false" />
-                <element signature="e#12348#12349#0" expanded="false" />
-                <element signature="e#12386#12387#0" expanded="false" />
-                <element signature="e#12432#12433#0" expanded="false" />
-                <element signature="e#12463#12464#0" expanded="false" />
-                <element signature="e#12522#12523#0" expanded="false" />
-                <element signature="e#12562#12563#0" expanded="false" />
-                <marker date="1527132537510" expanded="true" signature="7520:10869" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClusterAttr.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/model/ClusterAttr.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-              <folding>
-                <element signature="e#263#264#0" expanded="false" />
-                <element signature="e#288#289#0" expanded="false" />
-                <element signature="e#325#326#0" expanded="false" />
-                <element signature="e#353#354#0" expanded="false" />
-                <element signature="e#387#388#0" expanded="false" />
-                <element signature="e#416#417#0" expanded="false" />
-                <element signature="e#461#462#0" expanded="false" />
-                <element signature="e#497#498#0" expanded="false" />
-                <element signature="e#528#529#0" expanded="false" />
-                <element signature="e#555#556#0" expanded="false" />
-                <element signature="e#595#596#0" expanded="false" />
-                <element signature="e#627#628#0" expanded="false" />
-                <element signature="e#658#659#0" expanded="false" />
-                <element signature="e#685#686#0" expanded="false" />
-                <element signature="e#725#726#0" expanded="false" />
-                <element signature="e#757#758#0" expanded="false" />
-                <element signature="e#789#790#0" expanded="false" />
-                <element signature="e#816#817#0" expanded="false" />
-                <element signature="e#857#858#0" expanded="false" />
-                <element signature="e#889#890#0" expanded="false" />
-                <element signature="e#921#922#0" expanded="false" />
-                <element signature="e#948#949#0" expanded="false" />
-                <element signature="e#989#990#0" expanded="false" />
-                <element signature="e#1021#1022#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Cluster.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/util/Cluster.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="567">
-              <caret line="37" column="24" lean-forward="false" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#489#490#0" expanded="false" />
-                <element signature="e#521#522#0" expanded="false" />
-                <element signature="e#584#585#0" expanded="false" />
-                <element signature="e#626#627#0" expanded="false" />
-                <element signature="e#676#677#0" expanded="false" />
-                <element signature="e#711#712#0" expanded="false" />
-                <element signature="e#778#779#0" expanded="false" />
-                <element signature="e#826#827#0" expanded="false" />
-                <element signature="e#878#879#0" expanded="false" />
-                <element signature="e#913#914#0" expanded="false" />
-                <element signature="e#982#983#0" expanded="false" />
-                <element signature="e#1030#1031#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClusterServiceTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/service/ClusterServiceTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2835">
-              <caret line="153" column="19" lean-forward="false" selection-start-line="153" selection-start-column="19" selection-end-line="153" selection-end-column="19" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="method#delTask#0;class#ClusterServiceTest#0" expanded="false" />
-                <marker date="1526397867292" expanded="true" signature="3936:4111" ph="select a.id,... t_user" />
-              </folding>
+            <state relative-caret-position="483">
+              <caret line="25" column="42" lean-forward="false" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -207,20 +139,14 @@
         <option value="spring-beans.schema" />
         <option value="FxmlFile" />
         <option value="Tag Library Descriptor" />
-        <option value="Interface" />
         <option value="Jsp File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>validation</find>
-      <find>insert</find>
-      <find>CenterId</find>
-      <find>lo</find>
-      <find>mapper</find>
-      <find>resultmap</find>
       <find>end</find>
       <find>fini</find>
       <find>mybatis</find>
@@ -245,6 +171,12 @@
       <find>int</find>
       <find>importen</find>
       <find>update</find>
+      <find>importEntity</find>
+      <find>Name</find>
+      <find>code</find>
+      <find>getRecommendResult</find>
+      <find>na</find>
+      <find>name</find>
     </findStrings>
     <replaceStrings>
       <replace>/statics</replace>
@@ -263,21 +195,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/database.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/interfaces/ClusterTaskMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/atom/impl/ClusterTaskAtomService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/atom/impl/ClusterTaskAtomServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/atom/interfaces/IClusterTaskAtomSV.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/interfaces/ClusterAttrMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/interfaces/ClusterEntityMongoDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/ClusterEntityBean.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/interfaces/ClusterEntityDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/impl/ClusterEntityDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis/ClusterAttrMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis/ClusterTaskMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis/SysUserMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/model/ClusterObj.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/ClusterObjMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/interfaces/ClusterObjMapper.java" />
         <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
@@ -286,7 +206,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/recommend/web/controller/IndexController.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mvc-dispatcher-servlet.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/login.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/chart_columnar.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/chart_line.html" />
@@ -303,17 +222,30 @@
         <option value="$PROJECT_DIR$/src/main/java/com/recommend/web/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/index.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/sidebar_left.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/bean/ClusterEntityBean.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/util/Cluster.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IKMeansSV.java" />
         <option value="$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class" />
-        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IClusterSV.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/ClusterServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/test/java/service/ClusterServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IClusterSV.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IKMeansSV.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/KMeansServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/impl/ClusterEntityDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/interfaces/ClusterEntityDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/impl/ClusterEntityDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/ClusterTaskMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/SysUserMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mvc-dispatcher-servlet.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/ClusterAttrMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/model/ClusterObjExample.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/model/ClusterObj.java" />
         <option value="$PROJECT_DIR$/src/test/java/service/ClusterMongoTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/service/ClusterServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IClusterTaskSV.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/ClusterTaskServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/ClusterAttrServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IClusterAttrSV.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/bean/ClusterEntityBean.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/ClusterObjectServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IClusterObjectSV.java" />
       </list>
     </option>
   </component>
@@ -391,10 +323,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
-    <option name="y" value="1" />
-    <option name="width" value="1934" />
-    <option name="height" value="1086" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1098" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -416,7 +348,6 @@
     <panes>
       <pane id="PackagesPane" />
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -442,6 +373,18 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -458,6 +401,54 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Recommend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Recommend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Recommend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Recommend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mybatis" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -558,6 +549,152 @@
               <option name="myItemId" value="service" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="business" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Recommend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Recommend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="recommend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="operation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="business" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Recommend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Recommend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="recommend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="operation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="atom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Recommend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Recommend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="recommend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="operation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="atom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -646,6 +783,10 @@
               <option name="myItemId" value="mongo" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -730,6 +871,52 @@
               <option name="myItemId" value="dao" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Recommend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Recommend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="recommend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="operation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -763,6 +950,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -801,33 +989,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ClusterMongoTest.updateEntity">
-    <configuration default="false" name="ClusterMongoTest.queryEntity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="Recommend" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="service" />
-      <option name="MAIN_CLASS_NAME" value="service.ClusterMongoTest" />
-      <option name="METHOD_NAME" value="queryEntity" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.ClusterServiceTest.importEntitys">
     <configuration default="false" name="ClusterServiceTest.importEntitys" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -919,6 +1081,32 @@
       <option name="PACKAGE_NAME" value="service" />
       <option name="MAIN_CLASS_NAME" value="service.ClusterMongoTest" />
       <option name="METHOD_NAME" value="updateEntity" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ClusterServiceTest.testQueryObj" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Recommend" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.ClusterServiceTest" />
+      <option name="METHOD_NAME" value="testQueryObj" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1484,19 +1672,19 @@
       <item index="0" class="java.lang.String" itemvalue="Maven.install" />
       <item index="1" class="java.lang.String" itemvalue="Maven.run" />
       <item index="2" class="java.lang.String" itemvalue="Tomcat Server.recommend" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.ClusterMongoTest.queryEntity" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.ClusterServiceTest.importEntitys" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.ClusterServiceTest.queryClusterEntityBeans" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.ClusterServiceTest.testLoadData" />
-      <item index="7" class="java.lang.String" itemvalue="JUnit.ClusterMongoTest.updateEntity" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.ClusterServiceTest.importEntitys" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ClusterServiceTest.queryClusterEntityBeans" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.ClusterServiceTest.testLoadData" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.ClusterMongoTest.updateEntity" />
+      <item index="7" class="java.lang.String" itemvalue="JUnit.ClusterServiceTest.testQueryObj" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.ClusterMongoTest.updateEntity" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.ClusterServiceTest.importEntitys" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.ClusterServiceTest.testLoadData" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.ClusterServiceTest.queryClusterEntityBeans" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.ClusterMongoTest.queryEntity" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ClusterServiceTest.importEntitys" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ClusterServiceTest.testQueryObj" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.ClusterMongoTest.updateEntity" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.ClusterServiceTest.testLoadData" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.ClusterServiceTest.queryClusterEntityBeans" />
       </list>
     </recent_temporary>
   </component>
@@ -1528,7 +1716,8 @@
       <workItem from="1526607241490" duration="1666000" />
       <workItem from="1526800568063" duration="2564000" />
       <workItem from="1526883618829" duration="12365000" />
-      <workItem from="1527144631649" duration="1235000" />
+      <workItem from="1527144631649" duration="17065000" />
+      <workItem from="1527318610070" duration="5981000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1525052895566</created>
@@ -1541,22 +1730,19 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ClusterMongoTest_updateEntity - 2018.05.24 at 00h 05m 15s.xml">
-      <configuration name="ClusterMongoTest.updateEntity" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ClusterMongoTest_updateEntity - 2018.05.24 at 11h 19m 38s.xml">
-      <configuration name="ClusterMongoTest.updateEntity" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ClusterMongoTest_updateEntity - 2018.05.24 at 11h 24m 13s.xml">
-      <configuration name="ClusterMongoTest.updateEntity" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ClusterMongoTest_updateEntity - 2018.05.24 at 11h 26m 32s.xml">
-      <configuration name="ClusterMongoTest.updateEntity" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ClusterMongoTest_updateEntity - 2018.05.24 at 11h 30m 48s.xml">
-      <configuration name="ClusterMongoTest.updateEntity" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ClusterServiceTest_importEntitys - 2018.05.24 at 00h 41m 34s.xml">
+      <configuration name="ClusterServiceTest.importEntitys" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ClusterServiceTest_importEntitys - 2018.05.25 at 22h 41m 37s.xml">
+      <configuration name="ClusterServiceTest.importEntitys" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ClusterServiceTest_importEntitys - 2018.05.25 at 23h 10m 12s.xml">
+      <configuration name="ClusterServiceTest.importEntitys" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ClusterServiceTest_importEntitys - 2018.05.25 at 23h 34m 34s.xml">
+      <configuration name="ClusterServiceTest.importEntitys" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ClusterServiceTest_importEntitys - 2018.05.25 at 23h 46m 51s.xml">
       <configuration name="ClusterServiceTest.importEntitys" configurationId="JUnit" />
     </history-entry>
     <history-entry file="ClusterServiceTest_testLoadData - 2018.05.21 at 22h 43m 55s.xml">
@@ -1571,19 +1757,22 @@
     <history-entry file="ClusterServiceTest_testLoadData - 2018.05.21 at 23h 12m 32s.xml">
       <configuration name="ClusterServiceTest.testLoadData" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ClusterServiceTest_testQueryObj - 2018.05.25 at 16h 30m 54s.xml">
+      <configuration name="ClusterServiceTest.testQueryObj" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="220166000" />
+    <option name="totallyTimeSpent" value="241977000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="1" width="1934" height="1086" extended-state="0" />
+    <frame x="-9" y="-9" width="1938" height="1098" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6463022" sideWeight="0.50214595" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31725615" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32886267" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32849464" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299356" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1593,21 +1782,21 @@
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3583062" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6463022" sideWeight="0.49785408" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48751357" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48660237" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30975348" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2629032" sideWeight="0.47435898" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30944625" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26609442" sideWeight="0.47052518" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299356" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27092275" sideWeight="0.51821864" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3084764" sideWeight="0.525641" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26233906" sideWeight="0.5294748" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1696,24 +1885,24 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/service/ClusterServiceTest.java</url>
-          <line>41</line>
+          <line>54</line>
           <properties />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/service/ClusterServiceTest.java</url>
-          <line>48</line>
+          <line>61</line>
           <properties />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/service/ClusterServiceTest.java</url>
-          <line>84</line>
+          <line>97</line>
           <properties />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/impl/ClusterEntityDaoImpl.java</url>
-          <line>42</line>
+          <line>44</line>
           <properties />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
@@ -1730,56 +1919,50 @@
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/ClusterServiceImpl.java</url>
-          <line>122</line>
-          <properties />
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/service/ClusterServiceTest.java</url>
-          <line>105</line>
+          <line>103</line>
           <properties />
           <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/KMeansServiceImpl.java</url>
-          <line>71</line>
+          <line>59</line>
           <properties />
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/KMeansServiceImpl.java</url>
-          <line>109</line>
+          <line>97</line>
           <properties />
           <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/KMeansServiceImpl.java</url>
-          <line>200</line>
+          <line>188</line>
           <properties />
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/KMeansServiceImpl.java</url>
-          <line>269</line>
+          <line>257</line>
           <properties />
           <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/KMeansServiceImpl.java</url>
-          <line>275</line>
+          <line>271</line>
           <properties />
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/KMeansServiceImpl.java</url>
-          <line>158</line>
+          <line>146</line>
           <properties />
           <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/impl/ClusterEntityDaoImpl.java</url>
-          <line>59</line>
+          <line>65</line>
           <properties />
           <option name="timeStamp" value="48" />
         </line-breakpoint>
@@ -1797,12 +1980,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/KMeansServiceImpl.java</url>
-          <line>291</line>
+          <line>287</line>
           <properties />
           <option name="timeStamp" value="54" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/service/ClusterServiceTest.java</url>
+          <line>189</line>
+          <properties />
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="56" />
+      <option name="time" value="58" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1811,87 +2000,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-mongodb/1.8.1.RELEASE/spring-data-mongodb-1.8.1.RELEASE.jar!/org/springframework/data/mongodb/core/query/Query.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2394">
-          <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-mongodb/1.8.1.RELEASE/spring-data-mongodb-1.8.1.RELEASE.jar!/org/springframework/data/mongodb/core/query/Criteria.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1239">
-          <caret line="30" column="18" lean-forward="false" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="29" column="45" lean-forward="true" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/web/controller/ApplicationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/maven-archiver/pom.properties" />
-    <entry file="jar://H:/Environment/Java8/src.zip!/java/util/concurrent/ThreadPoolExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="623" column="0" lean-forward="false" selection-start-line="623" selection-start-column="0" selection-end-line="623" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://H:/Environment/Java8/src.zip!/java/util/concurrent/FutureTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4788">
-          <caret line="265" column="0" lean-forward="false" selection-start-line="265" selection-start-column="0" selection-end-line="265" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="48" column="44" lean-forward="false" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/com/recommend/web/controller/IndexController.class" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/statics/css/core.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="237" column="1" lean-forward="false" selection-start-line="237" selection-start-column="1" selection-end-line="237" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mvc-dispatcher-servlet.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB_INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1613">
-          <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB_INF/pages/chart_columnar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="41">
@@ -2047,14 +2155,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="54" column="4" lean-forward="false" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/atom/impl/ClusterTaskAtomServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
@@ -2069,105 +2169,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IClusterSV.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="37" column="7" lean-forward="false" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/util/Cluster.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
           <caret line="37" column="24" lean-forward="false" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#489#490#0" expanded="false" />
-            <element signature="e#521#522#0" expanded="false" />
-            <element signature="e#584#585#0" expanded="false" />
-            <element signature="e#626#627#0" expanded="false" />
-            <element signature="e#676#677#0" expanded="false" />
-            <element signature="e#711#712#0" expanded="false" />
-            <element signature="e#778#779#0" expanded="false" />
-            <element signature="e#826#827#0" expanded="false" />
-            <element signature="e#878#879#0" expanded="false" />
-            <element signature="e#913#914#0" expanded="false" />
-            <element signature="e#982#983#0" expanded="false" />
-            <element signature="e#1030#1031#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IKMeansSV.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="50" column="16" lean-forward="false" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/model/ClusterAttr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-          <folding>
-            <element signature="e#263#264#0" expanded="false" />
-            <element signature="e#288#289#0" expanded="false" />
-            <element signature="e#325#326#0" expanded="false" />
-            <element signature="e#353#354#0" expanded="false" />
-            <element signature="e#387#388#0" expanded="false" />
-            <element signature="e#416#417#0" expanded="false" />
-            <element signature="e#461#462#0" expanded="false" />
-            <element signature="e#497#498#0" expanded="false" />
-            <element signature="e#528#529#0" expanded="false" />
-            <element signature="e#555#556#0" expanded="false" />
-            <element signature="e#595#596#0" expanded="false" />
-            <element signature="e#627#628#0" expanded="false" />
-            <element signature="e#658#659#0" expanded="false" />
-            <element signature="e#685#686#0" expanded="false" />
-            <element signature="e#725#726#0" expanded="false" />
-            <element signature="e#757#758#0" expanded="false" />
-            <element signature="e#789#790#0" expanded="false" />
-            <element signature="e#816#817#0" expanded="false" />
-            <element signature="e#857#858#0" expanded="false" />
-            <element signature="e#889#890#0" expanded="false" />
-            <element signature="e#921#922#0" expanded="false" />
-            <element signature="e#948#949#0" expanded="false" />
-            <element signature="e#989#990#0" expanded="false" />
-            <element signature="e#1021#1022#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/ClusterServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1659">
-          <caret line="98" column="21" lean-forward="false" selection-start-line="98" selection-start-column="21" selection-end-line="98" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/bean/ClusterEntityBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="49" column="41" lean-forward="true" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/service/ClusterServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2835">
-          <caret line="153" column="19" lean-forward="false" selection-start-line="153" selection-start-column="19" selection-end-line="153" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#delTask#0;class#ClusterServiceTest#0" expanded="false" />
-            <marker date="1526397867292" expanded="true" signature="3936:4111" ph="select a.id,... t_user" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2178,48 +2183,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/KMeansServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5922">
-          <caret line="296" column="29" lean-forward="false" selection-start-line="296" selection-start-column="29" selection-end-line="296" selection-end-column="29" />
-          <folding>
-            <element signature="e#12039#12040#0" expanded="false" />
-            <element signature="e#12071#12072#0" expanded="false" />
-            <element signature="e#12147#12148#0" expanded="false" />
-            <element signature="e#12190#12191#0" expanded="false" />
-            <element signature="e#12248#12249#0" expanded="false" />
-            <element signature="e#12278#12279#0" expanded="false" />
-            <element signature="e#12348#12349#0" expanded="false" />
-            <element signature="e#12386#12387#0" expanded="false" />
-            <element signature="e#12432#12433#0" expanded="false" />
-            <element signature="e#12463#12464#0" expanded="false" />
-            <element signature="e#12522#12523#0" expanded="false" />
-            <element signature="e#12562#12563#0" expanded="false" />
-            <marker date="1527132537510" expanded="true" signature="7520:10869" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/interfaces/ClusterEntityDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="24" column="14" lean-forward="false" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/service/ClusterMongoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1197">
-          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.3.5.RELEASE/spring-aop-4.3.5.RELEASE.jar!/org/springframework/aop/support/AopUtils.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-780">
@@ -2227,10 +2190,247 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/model/ClusterAttr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/KMeansServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="50" column="77" lean-forward="false" selection-start-line="50" selection-start-column="77" selection-end-line="50" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1527233224488" expanded="true" signature="7261:10610" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IKMeansSV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/ClusterTaskMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="23" column="41" lean-forward="false" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+          <folding>
+            <marker date="1527236434491" expanded="true" signature="3836:3944" ph="select from cluster_task" />
+            <marker date="1527236434491" expanded="true" signature="4030:4092" ph="delete from " />
+            <marker date="1527236434491" expanded="true" signature="4215:4239" ph="delete from " />
+            <marker date="1527236434491" expanded="true" signature="4480:4829" ph="insert into cluster_task... " />
+            <marker date="1527236434491" expanded="true" signature="6424:6457" ph="select count... cluster_task" />
+            <marker date="1527236434491" expanded="true" signature="7663:8079" ph="update clust... " />
+            <marker date="1527236434491" expanded="true" signature="8309:9022" ph="update clust... " />
+            <marker date="1527236434491" expanded="true" signature="9141:9504" ph="update clust... " />
+            <marker date="1527236434491" expanded="true" signature="9225:9504" ph="update clust... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="44" column="35" lean-forward="true" selection-start-line="44" selection-start-column="35" selection-end-line="44" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/ClusterAttrMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+          <folding>
+            <marker date="1527236503847" expanded="true" signature="3655:3763" ph="select from cluster_attr" />
+            <marker date="1527236503847" expanded="true" signature="3849:3911" ph="delete from " />
+            <marker date="1527236503847" expanded="true" signature="4034:4058" ph="delete from " />
+            <marker date="1527236503847" expanded="true" signature="4299:4543" ph="insert into cluster_attr... " />
+            <marker date="1527236503847" expanded="true" signature="5817:5850" ph="select count... cluster_attr" />
+            <marker date="1527236503847" expanded="true" signature="6820:7117" ph="update clust... " />
+            <marker date="1527236503847" expanded="true" signature="7347:7852" ph="update clust... " />
+            <marker date="1527236503847" expanded="true" signature="7971:8229" ph="update clust... " />
+            <marker date="1527236503847" expanded="true" signature="8055:8229" ph="update clust... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/ClusterObjMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="729">
+          <caret line="123" column="23" lean-forward="true" selection-start-line="123" selection-start-column="23" selection-end-line="123" selection-end-column="23" />
+          <folding>
+            <marker date="1527236134532" expanded="true" signature="3690:3797" ph="select from cluster_obj" />
+            <marker date="1527236134532" expanded="true" signature="3883:3944" ph="delete from " />
+            <marker date="1527236134532" expanded="true" signature="4066:4089" ph="delete from " />
+            <marker date="1527236134532" expanded="true" signature="4287:4569" ph="insert into cluster_obj... " />
+            <marker date="1527236134532" expanded="true" signature="5845:5877" ph="select count... cluster_obj" />
+            <marker date="1527236134532" expanded="true" signature="6882:7203" ph="update clust... " />
+            <marker date="1527236134532" expanded="true" signature="7432:7972" ph="update clust... " />
+            <marker date="1527236134532" expanded="true" signature="8090:8372" ph="update clust... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mvc-dispatcher-servlet.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="658">
+          <caret line="92" column="23" lean-forward="true" selection-start-line="92" selection-start-column="23" selection-end-line="92" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/SysUserMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+          <folding>
+            <marker date="1527236445811" expanded="true" signature="3506:3610" ph="select from sys_user" />
+            <marker date="1527236445811" expanded="true" signature="3696:3754" ph="delete from " />
+            <marker date="1527236445811" expanded="true" signature="3873:3893" ph="delete from " />
+            <marker date="1527236445811" expanded="true" signature="4130:4311" ph="insert into sys_user... " />
+            <marker date="1527236445811" expanded="true" signature="5316:5345" ph="select count... sys_user" />
+            <marker date="1527236445811" expanded="true" signature="6123:6329" ph="update sys_u... " />
+            <marker date="1527236445811" expanded="true" signature="6555:6896" ph="update sys_u... " />
+            <marker date="1527236445811" expanded="true" signature="7011:7192" ph="update sys_u... " />
+            <marker date="1527236445811" expanded="true" signature="7094:7192" ph="update sys_u... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/model/ClusterObjExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3454">
+          <caret line="310" column="0" lean-forward="true" selection-start-line="310" selection-start-column="0" selection-end-line="310" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/interfaces/ClusterObjMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="22" column="46" lean-forward="true" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/service/ClusterMongoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="43" column="28" lean-forward="true" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/impl/ClusterEntityDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="75" column="24" lean-forward="true" selection-start-line="75" selection-start-column="24" selection-end-line="75" selection-end-column="24" />
+        <state relative-caret-position="2436">
+          <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/interfaces/ClusterEntityDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="35" column="35" lean-forward="false" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/service/ClusterServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="62" column="37" lean-forward="true" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
+          <folding>
+            <marker date="1527262542598" expanded="true" signature="3890:4011" ph="select a.id,... t_user" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/ClusterTaskServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1680">
+          <caret line="93" column="1" lean-forward="true" selection-start-line="93" selection-start-column="1" selection-end-line="93" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/ClusterAttrServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="747">
+          <caret line="57" column="5" lean-forward="true" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IClusterAttrSV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/model/ClusterObj.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/dao/mongo/bean/ClusterEntityBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="31" column="19" lean-forward="true" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IClusterTaskSV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="46" column="19" lean-forward="false" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/impl/ClusterObjectServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="978">
+          <caret line="98" column="9" lean-forward="false" selection-start-line="98" selection-start-column="9" selection-end-line="98" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/recommend/operation/core/service/business/interfaces/IClusterObjectSV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="25" column="42" lean-forward="false" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
           <folding />
         </state>
       </provider>

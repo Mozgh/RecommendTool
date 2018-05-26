@@ -22,6 +22,8 @@ import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @author zhanggh
@@ -50,15 +52,24 @@ public class ClusterEntityDaoImpl implements ClusterEntityDao{
     }
 
     @Override
-    public int updateEntity(ClusterEntityBean entity) throws Exception{
-        Query query = new Query(Criteria.where("_id").is(entity.getId()));
+    public int updateEntity(Map<String, Object> queryMap, Map<String, Object> updateMap) throws Exception{
+        Query query = new Query();
+        Set<String> queryKeySet = queryMap.keySet();
+        for (String queryKey: queryKeySet) {
+            query.addCriteria(Criteria.where(queryKey).is(queryMap.get(queryKey)));
+        }
         Update update = new Update();
-        update.set("isCenter", entity.getIsCenter());
-        update.set("dissimilarity", entity.getDissimilarity());
-        update.set("centerId", entity.getCenterId());
-        update.set("name", entity.getName());
-        WriteResult result = mongoTemplate.upsert(query, update, ClusterEntityBean.class,"clusterEntity");
-        return result.getN();
+        Set<String> updateKeySet = updateMap.keySet();
+        for(String updateKey: updateKeySet) {
+            update.set(updateKey, updateMap.get(updateKey));
+        }
+        try {
+            mongoTemplate.upsert(query, update, ClusterEntityBean.class, "clusterEntity");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+        return 1;
     }
 
     @Override
@@ -75,6 +86,19 @@ public class ClusterEntityDaoImpl implements ClusterEntityDao{
         } else {
             return null;
         }
+    }
+
+    @Override
+    public List<ClusterEntityBean> queryEntityListByCode(String code) {
+
+        List<ClusterEntityBean> result = null;
+        if (StringUtils.isEmpty(code)) {
+            logger.error("param code can not be empty!");
+            return null;
+        }
+        Query query = new Query(Criteria.where("name").is(code));
+        result = mongoTemplate.find(query, ClusterEntityBean.class, "clusterEntity");
+        return result;
     }
 
     @Override

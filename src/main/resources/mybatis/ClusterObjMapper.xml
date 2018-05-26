@@ -5,7 +5,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="mongo_id" jdbcType="VARCHAR" property="mongoId" />
     <result column="task_id" jdbcType="INTEGER" property="taskId" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
     <result column="is_center" jdbcType="INTEGER" property="isCenter" />
     <result column="center_id" jdbcType="VARCHAR" property="centerId" />
   </resultMap>
@@ -68,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, mongo_id, task_id, name, is_center, center_id
+    id, mongo_id, task_id, code, is_center, center_id
   </sql>
   <select id="selectByExample" parameterType="com.recommend.operation.core.dao.model.ClusterObjExample" resultMap="BaseResultMap">
     select
@@ -103,10 +103,10 @@
   </delete>
   <insert id="insert" parameterType="com.recommend.operation.core.dao.model.ClusterObj">
     insert into cluster_obj (id, mongo_id, task_id, 
-      name, is_center, center_id
+      code, is_center, center_id
       )
     values (#{id,jdbcType=INTEGER}, #{mongoId,jdbcType=VARCHAR}, #{taskId,jdbcType=INTEGER}, 
-      #{name,jdbcType=VARCHAR}, #{isCenter,jdbcType=INTEGER}, #{centerId,jdbcType=VARCHAR}
+      #{code,jdbcType=VARCHAR}, #{isCenter,jdbcType=INTEGER}, #{centerId,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.recommend.operation.core.dao.model.ClusterObj">
@@ -121,8 +121,8 @@
       <if test="taskId != null">
         task_id,
       </if>
-      <if test="name != null">
-        name,
+      <if test="code != null">
+        code,
       </if>
       <if test="isCenter != null">
         is_center,
@@ -141,8 +141,8 @@
       <if test="taskId != null">
         #{taskId,jdbcType=INTEGER},
       </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
       </if>
       <if test="isCenter != null">
         #{isCenter,jdbcType=INTEGER},
@@ -170,8 +170,8 @@
       <if test="record.taskId != null">
         task_id = #{record.taskId,jdbcType=INTEGER},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="record.code != null">
+        code = #{record.code,jdbcType=VARCHAR},
       </if>
       <if test="record.isCenter != null">
         is_center = #{record.isCenter,jdbcType=INTEGER},
@@ -189,7 +189,7 @@
     set id = #{record.id,jdbcType=INTEGER},
       mongo_id = #{record.mongoId,jdbcType=VARCHAR},
       task_id = #{record.taskId,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=VARCHAR},
+      code = #{record.code,jdbcType=VARCHAR},
       is_center = #{record.isCenter,jdbcType=INTEGER},
       center_id = #{record.centerId,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -205,8 +205,8 @@
       <if test="taskId != null">
         task_id = #{taskId,jdbcType=INTEGER},
       </if>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
       </if>
       <if test="isCenter != null">
         is_center = #{isCenter,jdbcType=INTEGER},
@@ -221,7 +221,7 @@
     update cluster_obj
     set mongo_id = #{mongoId,jdbcType=VARCHAR},
       task_id = #{taskId,jdbcType=INTEGER},
-      name = #{name,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
       is_center = #{isCenter,jdbcType=INTEGER},
       center_id = #{centerId,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
