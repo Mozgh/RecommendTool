@@ -1,9 +1,5 @@
 package com.recommend.operation.core.service.business.impl;
 
-import com.recommend.operation.core.dao.interfaces.ClusterAttrMapper;
-import com.recommend.operation.core.dao.interfaces.ClusterTaskMapper;
-import com.recommend.operation.core.dao.model.ClusterAttr;
-import com.recommend.operation.core.dao.model.ClusterAttrExample;
 import com.recommend.operation.core.dao.model.ClusterTask;
 import com.recommend.operation.core.dao.mongo.bean.ClusterEntityBean;
 import com.recommend.operation.core.dao.mongo.interfaces.ClusterEntityDao;
@@ -24,28 +20,18 @@ public class KMeansServiceImpl implements IKMeansSV {
 
     private Logger logger = Logger.getLogger(KMeansServiceImpl.class);
 
-    private List<Cluster> clusters = new ArrayList<>();
+    private Map<String, Cluster> clusters = new HashMap<>();
 
     private Map<String, ClusterEntityBean> entityMap = new HashMap<>();
-
-    private Map<String, ClusterEntityBean> centers = new HashMap<>();
-
-    private List<ClusterAttr> attrList;
 
     @Autowired
     ClusterEntityDao clusterEntityDao;
 
-    @Autowired
-    ClusterAttrMapper attrMapper;
 
     private boolean loadTaskData(Integer taskId) {
         if (null == taskId) {
             logger.error("task id can not be null!");
         }
-
-        ClusterAttrExample example = new ClusterAttrExample();
-        example.createCriteria().andTaskIdEqualTo(taskId);
-        this.attrList = attrMapper.selectByExample(example);
 
         try {
             List<ClusterEntityBean> entityBeanList = clusterEntityDao.queryEntityListByTaskId(taskId);
@@ -67,70 +53,45 @@ public class KMeansServiceImpl implements IKMeansSV {
             int index = entityMap.size() / count * (i + 1);
             String key = (String) entityMap.keySet().toArray()[index];
             ClusterEntityBean entity = entityMap.get(key);
-            Map<String, Double> entityId = new HashMap<>();
-            entityId.put(entity.getId(), 0D);
+            Map<String, Double> entityMap = new HashMap<>();
+            entityMap.put(entity.getId(), 0D);
             entity.setCenterId(entity.getId());
             entity.setIsCenter(1);
             Cluster cluster = new Cluster();
             cluster.setCenterEntity(entity);
-            cluster.setEntityMap(entityId);
-            Map<String, Object> attrMap = new HashMap<>();
-            for (ClusterAttr attr: attrList) {
-                switch (attr.getType().toString()) {
-                    case "1":
-                        attrMap.put(attr.getCode(), 0D);
-                        break;
-                    case "2":
-                        attrMap.put(attr.getCode(), false);
-                        break;
-                    case "3":
-                        attrMap.put(attr.getCode(), "");
-                        break;
-                    default:
-                }
+            cluster.setEntityMap(entityMap);
 
-            }
-            cluster.setAttrValueMap(attrMap);
-            centers.put(entity.getId(), entity);
-            clusters.add(cluster);
+            clusters.put(entity.getId(), cluster);
             logger.info("cluster[" + (i + 1) + "] centerId: " + entity.getId());
         }
         logger.info("[INIT] init centers end");
     }
 
     @Override
-    public double calcDistence(ClusterEntityBean entity, ClusterEntityBean base, List<ClusterAttr> attrList) {
+    public double calcDistence(ClusterEntityBean entity, ClusterEntityBean base) {
         double distance = 0F;
         double entityMod = 0F;
         double baseMod = 0F;
         double crossProduct = 0F;
         double entityValue = 0F;
         double baseValue = 0F;
-        for (ClusterAttr attr : attrList) {
-            try {
-                switch (attr.getType()) {
-                    case 1:
-                        entityValue = Double.parseDouble(entity.getAttrValue().get(attr.getCode()).toString());
-                        baseValue = Double.parseDouble(base.getAttrValue().get(attr.getCode()).toString());
-                        break;
-                    case 2:
-                    case 3:
-                        baseValue = 0D;
-                        if(entity.getAttrValue().get(attr.getCode()).equals(base.getAttrValue().get(attr.getCode()))) {
-                            entityValue = 1D;
-                        } else {
-                            entityValue = 0D;
-                        }
-                        break;
-                    default:
-                        logger.error("attr type error: entityId=" + entity.getId() + " baseId:" + base.getId() + " attribute name:" + attr.getName());
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+
+        Map<String, Object> entityAttrValue = entity.getAttrValue();
+        Map<String, Object> baseAttrValue = base.getAttrValue();
+
+        Set<String> entityAttrSet = entityAttrValue.keySet();
+        for (String key: entityAttrSet) {
+            entityValue = Double.parseDouble(String.valueOf(entityAttrValue.get(key)));
+            if (baseAttrValue.containsKey(key)) {
+                baseValue = Double.parseDouble(String.valueOf(baseAttrValue.get(key)));
+                crossProduct += entityValue * baseValue;
             }
-            crossProduct += entityValue * baseValue;
             entityMod += entityValue * entityValue;
-            baseMod += baseValue * baseValue;
+        }
+
+        List<Object> baseAttrValueList = new ArrayList<>(baseAttrValue.values());
+        for (Object value : baseAttrValueList) {
+            baseMod += Double.parseDouble(String.valueOf(value)) * Double.parseDouble(String.valueOf(value));
         }
 
         entityMod = Math.sqrt(entityMod);
@@ -143,19 +104,21 @@ public class KMeansServiceImpl implements IKMeansSV {
     public boolean updateCenter(Cluster cluster) {
         logger.info("[update] update clusters' center begin.");
         logger.info("cluster center current: " + cluster.getCenterEntity().getId());
-        logger.info("");
         Double minDistance = null;
         String nextCenterId = null;
 
-        ClusterEntityBean nextCenter = new ClusterEntityBean();
-        nextCenter.setAttrValue(cluster.getAttrValueMap());
         //计算下一中心点到本中心点的距离
-        Double nextCenterDistance = calcDistence(nextCenter, cluster.getCenterEntity(), attrList);
+        Double nextCenterDistance = 0D;
+
+        for (Double distance: cluster.getEntityMap().values()) {
+            nextCenterDistance += distance;
+        }
+        nextCenterDistance = nextCenterDistance / cluster.getEntityMap().size();
 
         //寻找与本中心点距离和nextCenterDistance最接近的点
         Set<String> idSet = cluster.getEntityMap().keySet();
         for (String id : idSet) {
-            Double distance = cluster.getEntityMap().get(id) - nextCenterDistance;
+            Double distance = Math.abs(cluster.getEntityMap().get(id) - nextCenterDistance);
             if (null == minDistance || distance < minDistance) {
                 minDistance = distance;
                 nextCenterId = id;
@@ -164,6 +127,7 @@ public class KMeansServiceImpl implements IKMeansSV {
         //最接近的点即为下一个聚类中心，修改聚类的中心实体，entityMap清空，等待下次分配
         if (StringUtils.isEmpty(nextCenterId)) {
             logger.error("error!");
+            return false;
         } else {
             //如果计算得到的下一个聚类中心和当前中心相同，说明已不能再修改，返回false
             if (nextCenterId.equals(cluster.getCenterEntity().getCenterId())) {
@@ -171,14 +135,18 @@ public class KMeansServiceImpl implements IKMeansSV {
                 return false;
             } else {
                 //如果聚类中心发生了变换，返回true
+                clusters.remove(cluster.getCenterEntity().getId());
+                entityMap.get(cluster.getCenterEntity().getId()).setCenterId(nextCenterId);
+                entityMap.get(cluster.getCenterEntity().getId()).setIsCenter(0);
+                entityMap.get(nextCenterId).setIsCenter(1);
+                entityMap.get(nextCenterId).setCenterId(nextCenterId);
                 cluster.setCenterEntity(entityMap.get(nextCenterId));
-                cluster.getEntityMap().clear();
+//                cluster.getEntityMap().clear();
+                clusters.put(cluster.getCenterEntity().getId(), cluster);
                 logger.info("new center: " + nextCenterId);
                 return true;
             }
         }
-
-        return true;
     }
 
     @Override
@@ -188,13 +156,18 @@ public class KMeansServiceImpl implements IKMeansSV {
 
         Set<String> entityIdIter = entityMap.keySet();
 
+        //分配结点时清空之前的分配结果
+        for(Cluster cluster: clusters.values()) {
+            cluster.getEntityMap().clear();
+        }
+
         for (String entityId : entityIdIter) {
             ClusterEntityBean entity = entityMap.get(entityId);
             Double distance = null;
             String centerId = null;
 
-            for (Cluster cluster : clusters) {
-                Double newDistance = calcDistence(entity, cluster.getCenterEntity(), attrList);
+            for (Cluster cluster : new ArrayList<>(clusters.values())) {
+                Double newDistance = calcDistence(entity, cluster.getCenterEntity());
                 if (null == distance || newDistance < distance) {
                     distance = newDistance;
                     centerId = cluster.getCenterEntity().getId();
@@ -203,54 +176,7 @@ public class KMeansServiceImpl implements IKMeansSV {
 
             entity.setCenterId(centerId);
             entity.setDissimilarity(distance);
-            for (Cluster cluster : clusters) {
-                if (null != centerId && centerId.equals(cluster.getCenterEntity().getId())) {
-                    cluster.getEntityMap().put(entity.getId(), distance);
-                }
-
-                Map<String, Integer> stringAttrCounter = new HashMap<>();
-                for (ClusterAttr attr : attrList) {
-                    switch (attr.getType()) {
-                        case 1:
-                            Double valueD = 0D;
-                            if (null != cluster.getAttrValueMap().get(attr.getCode())) {
-                                valueD = Double.parseDouble(cluster.getAttrValueMap().get(attr.getCode()).toString());
-                            }
-                            valueD += Double.parseDouble(entity.getAttrValue().get(attr.getCode()).toString());
-                            valueD = valueD / cluster.getEntityMap().size();
-                            cluster.getAttrValueMap().put(attr.getCode(), valueD);
-                            break;
-                        case 2:
-                            Boolean valueB = false;
-                            if (null != cluster.getAttrValueMap().get(attr.getCode())) {
-                                valueB = Boolean.parseBoolean(cluster.getAttrValueMap().get(attr.getCode()).toString());
-                            }
-                            Boolean valueV = Boolean.parseBoolean(entity.getAttrValue().get(attr.getCode()).toString());
-                            if (valueB) {
-                                valueV = !valueV;
-                            }
-                            if (valueV) {
-                                cluster.getAttrValueMap().put(attr.getCode(), true);
-                            } else {
-                                cluster.getAttrValueMap().put(attr.getCode(), false);
-                            }
-                            break;
-                        case 3:
-                            //TODO:字符类型的属性值计算下一中心时如何处理
-//                            String valueS = entity.getAttrValue().get(attr.getCode()).toString();
-//                            if (stringAttrCounter.containsKey(valueS)) {
-//                                Integer count = stringAttrCounter.get(valueS);
-//                                stringAttrCounter.put(valueS, count + 1);
-//                            } else {
-//                                stringAttrCounter.put(valueS, 1);
-//                            }
-//
-                            break;
-                        default:
-                            logger.error("attr type error!");
-                    }
-                }
-            }
+            clusters.get(centerId).getEntityMap().put(entity.getId(), distance);
 
             logger.info("assign entity(" + entity.getId() + ") to cluster(center:" + centerId + ")");
         }
@@ -275,7 +201,7 @@ public class KMeansServiceImpl implements IKMeansSV {
             this.assignPoints();
             //当所有聚类更新中心都返回false时，notFinish为false
             boolean update = false;
-            for (Cluster cluster : clusters) {
+            for (Cluster cluster : new ArrayList<>(clusters.values())) {
                 update = update | this.updateCenter(cluster);
             }
             notFinish = update;
@@ -294,8 +220,8 @@ public class KMeansServiceImpl implements IKMeansSV {
                 queryMap.put("_id", entityId);
                 Map<String, Object> updateMap = new HashMap<>();
                 updateMap.put("isCenter", entityMap.get(entityId).getIsCenter());
-                updateMap.put("centerId", entityMap.get(entityId).getIsCenter());
-                clusterEntityDao.updateEntity(queryMap, updateMap);
+                updateMap.put("centerId", entityMap.get(entityId).getCenterId());
+                updateCount += clusterEntityDao.updateEntity(queryMap, updateMap);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -311,22 +237,6 @@ public class KMeansServiceImpl implements IKMeansSV {
 
     public void setEntityList(Map<String, ClusterEntityBean> entityList) {
         this.entityMap = entityList;
-    }
-
-    public Map<String, ClusterEntityBean> getCenters() {
-        return centers;
-    }
-
-    public void setCenters(Map<String, ClusterEntityBean> centers) {
-        this.centers = centers;
-    }
-
-    public List<ClusterAttr> getAttrList() {
-        return attrList;
-    }
-
-    public void setAttrList(List<ClusterAttr> attrList) {
-        this.attrList = attrList;
     }
 
 }

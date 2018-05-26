@@ -171,11 +171,9 @@ public class ClusterServiceTest {
     }
 
     @Test
-    public void testLoadData() {
-        ClusterTask task = new ClusterTask();
-        task = clusterSV.queryTaskById(1001);
+    public void kMeansExe() {
+        ClusterTask task = clusterSV.queryTaskById(1001);
         kMeansSV.execute(task);
-
     }
 
     @Test
@@ -188,6 +186,15 @@ public class ClusterServiceTest {
         obj.setCenterId("");
         obj.setIsCenter(0);
         int count = objMapper.insert(obj);
+        System.out.println(count);
+    }
+
+    @Test
+    public void testImportEntity() {
+
+        String sql = "select a.id as userId, a.gender,a.occupation,a.age, b.movie_id,b.rating from t_user a, rating b where a.id = b.user_id and a.id < 50";
+        Integer count = objectSV.importEntity(1001, "118.25.35.198", "3306", "mozgh", "Mysql@0430", "movie_rating", sql);
+
         System.out.println(count);
     }
 }

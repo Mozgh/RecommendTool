@@ -23,7 +23,7 @@ public interface IKMeansSV {
      * 计算距离
      * @author zhanggh
      */
-    public double calcDistence(ClusterEntityBean entity1, ClusterEntityBean entity2, List<ClusterAttr> attrList);
+    public double calcDistence(ClusterEntityBean entity1, ClusterEntityBean entity2);
 
     /**
      * 修改聚类中心

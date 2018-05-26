@@ -33,4 +33,13 @@ public interface IClusterAttrSV {
      * @throws Exception
      */
     public Integer deleteAttributeById(Integer attrId) throws Exception;
+
+    /**
+     * query Cluster attr list by Task Id
+     * @author zhanggh
+     * @param taskID task id
+     * @return cluster attr list
+     * @throws Exception
+     */
+    public List<ClusterAttr> queryAttrListByTaskId(Integer taskID) throws Exception;
 }

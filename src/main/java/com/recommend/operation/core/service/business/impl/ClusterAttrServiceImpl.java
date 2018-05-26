@@ -2,6 +2,7 @@ package com.recommend.operation.core.service.business.impl;
 
 import com.recommend.operation.core.dao.interfaces.ClusterAttrMapper;
 import com.recommend.operation.core.dao.model.ClusterAttr;
+import com.recommend.operation.core.dao.model.ClusterAttrExample;
 import com.recommend.operation.core.service.business.interfaces.IClusterAttrSV;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
@@ -55,6 +56,19 @@ public class ClusterAttrServiceImpl implements IClusterAttrSV {
             return 0;
         }
         return attrMapper.deleteByPrimaryKey(attrId);
+    }
+
+    @Override
+    public List<ClusterAttr> queryAttrListByTaskId(Integer taskID) throws Exception {
+        if (null == taskID) {
+            logger.error("param taskId can not be empty");
+            return null;
+        }
+        List<ClusterAttr> attrList = null;
+        ClusterAttrExample example = new ClusterAttrExample();
+        example.createCriteria().andTaskIdEqualTo(taskID);
+        attrList = attrMapper.selectByExample(example);
+        return attrList;
     }
 
 }
