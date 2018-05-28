@@ -197,4 +197,14 @@ public class ClusterServiceTest {
 
         System.out.println(count);
     }
+
+    @Test
+    public void testQueryRecommend() {
+        try {
+            List<Object> result = objectSV.getRecommendResult("44", "movie_id");
+            System.out.println(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

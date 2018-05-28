@@ -20,7 +20,7 @@ public class ClusterEntityBean {
     /**
      * cluster task id
      */
-    private int taskId;
+    private Integer taskId;
 
     /**
      * entity code
@@ -59,11 +59,11 @@ public class ClusterEntityBean {
         this.id = id;
     }
 
-    public int getTaskId() {
+    public Integer getTaskId() {
         return taskId;
     }
 
-    public void setTaskId(int taskId) {
+    public void setTaskId(Integer taskId) {
         this.taskId = taskId;
     }
 

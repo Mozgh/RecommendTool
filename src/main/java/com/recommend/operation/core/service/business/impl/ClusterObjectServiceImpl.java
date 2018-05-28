@@ -3,6 +3,7 @@ package com.recommend.operation.core.service.business.impl;
 import com.recommend.operation.core.dao.interfaces.ClusterObjMapper;
 import com.recommend.operation.core.dao.model.ClusterAttr;
 import com.recommend.operation.core.dao.model.ClusterObj;
+import com.recommend.operation.core.dao.model.ClusterObjExample;
 import com.recommend.operation.core.dao.mongo.bean.ClusterEntityBean;
 import com.recommend.operation.core.dao.mongo.interfaces.ClusterEntityDao;
 import com.recommend.operation.core.service.business.interfaces.IClusterAttrSV;
@@ -112,12 +113,11 @@ public class ClusterObjectServiceImpl implements IClusterObjectSV {
             return null;
         }
 
-        List<ClusterAttr> attrList = null;
-
-        //暂定三个字段为code, key, value
         String code = "";
         String key = "";
         String value = "";
+
+        List<ClusterAttr> attrList = null;
 
         try {
             attrList = attrSV.queryAttrListByTaskId(taskId);
@@ -166,7 +166,6 @@ public class ClusterObjectServiceImpl implements IClusterObjectSV {
                     bean.setCode(entityCode);
                     bean.setTaskId(taskId);
                     bean.setIsCenter(0);
-//                    bean.setCenterId("");
                     Map<String, Object> attrValue = new HashMap<>();
                     attrValue.put(rst.getObject(key).toString(), rst.getObject(value));
                     bean.setAttrValue(attrValue);
@@ -185,5 +184,13 @@ public class ClusterObjectServiceImpl implements IClusterObjectSV {
 
         importCount = this.importEntity(entityList);
         return importCount;
+    }
+
+    @Override
+    public Integer updateObjByMongodbId(ClusterObj obj) throws Exception{
+        ClusterObjExample example = new ClusterObjExample();
+        example.createCriteria().andMongoIdEqualTo(obj.getMongoId());
+
+        return objMapper.updateByExampleSelective(obj, example);
     }
 }

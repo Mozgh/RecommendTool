@@ -96,7 +96,7 @@ public class ClusterEntityDaoImpl implements ClusterEntityDao{
             logger.error("param code can not be empty!");
             return null;
         }
-        Query query = new Query(Criteria.where("name").is(code));
+        Query query = new Query(Criteria.where("code").is(code));
         result = mongoTemplate.find(query, ClusterEntityBean.class, "clusterEntity");
         return result;
     }
@@ -127,15 +127,14 @@ public class ClusterEntityDaoImpl implements ClusterEntityDao{
             return null;
         }
         Query query = new Query();
-        query.addCriteria(Criteria.where("centerID").is(centerId));
+        query.addCriteria(Criteria.where("centerId").is(centerId));
         result = mongoTemplate.find(query, ClusterEntityBean.class);
 
         if (CollectionUtils.isEmpty(result)) {
             logger.debug("cluster is empty -- centerId = " + centerId);
             return null;
-        } else {
-            return result;
         }
+        return result;
     }
 
     @Override

@@ -1,13 +1,16 @@
 package com.recommend.operation.core.service.business.impl;
 
+import com.recommend.operation.core.dao.model.ClusterObj;
 import com.recommend.operation.core.dao.model.ClusterTask;
 import com.recommend.operation.core.dao.mongo.bean.ClusterEntityBean;
 import com.recommend.operation.core.dao.mongo.interfaces.ClusterEntityDao;
+import com.recommend.operation.core.service.business.interfaces.IClusterObjectSV;
 import com.recommend.operation.core.service.business.interfaces.IKMeansSV;
 import com.recommend.operation.core.util.Cluster;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import java.util.*;
@@ -27,6 +30,8 @@ public class KMeansServiceImpl implements IKMeansSV {
     @Autowired
     ClusterEntityDao clusterEntityDao;
 
+    @Autowired
+    IClusterObjectSV objectSV;
 
     private boolean loadTaskData(Integer taskId) {
         if (null == taskId) {
@@ -68,19 +73,18 @@ public class KMeansServiceImpl implements IKMeansSV {
     }
 
     @Override
-    public double calcDistence(ClusterEntityBean entity, ClusterEntityBean base) {
-        double distance = 0F;
-        double entityMod = 0F;
-        double baseMod = 0F;
-        double crossProduct = 0F;
-        double entityValue = 0F;
-        double baseValue = 0F;
+    public Double calcDistence(ClusterEntityBean entity, ClusterEntityBean base) {
+        Double distance = 0D;       //entity和base的余弦度量
+        Double entityMod = 0D;      //entity的欧几里得范数
+        Double baseMod = 0D;        //base的欧几里得范数
+        Double crossProduct = 0D;   //entity和base的向量点积
+        Double entityValue = 0D;    //存储entity计算时的中间值
+        Double baseValue = 0D;      //存储base计算时的中间值
 
-        Map<String, Object> entityAttrValue = entity.getAttrValue();
-        Map<String, Object> baseAttrValue = base.getAttrValue();
+        Map<String, Object> entityAttrValue = entity.getAttrValue();    //存储entity的向量中的值
+        Map<String, Object> baseAttrValue = base.getAttrValue();        //存储base向量中的值
 
-        Set<String> entityAttrSet = entityAttrValue.keySet();
-        for (String key: entityAttrSet) {
+        for (String key: entityAttrValue.keySet()) {
             entityValue = Double.parseDouble(String.valueOf(entityAttrValue.get(key)));
             if (baseAttrValue.containsKey(key)) {
                 baseValue = Double.parseDouble(String.valueOf(baseAttrValue.get(key)));
@@ -109,15 +113,19 @@ public class KMeansServiceImpl implements IKMeansSV {
 
         //计算下一中心点到本中心点的距离
         Double nextCenterDistance = 0D;
-
-        for (Double distance: cluster.getEntityMap().values()) {
-            nextCenterDistance += distance;
+        if (!CollectionUtils.isEmpty(cluster.getEntityMap())) {
+            for (Double distance : cluster.getEntityMap().values()) {
+                nextCenterDistance += distance;
+            }
+            nextCenterDistance = nextCenterDistance / cluster.getEntityMap().size();
         }
-        nextCenterDistance = nextCenterDistance / cluster.getEntityMap().size();
-
+        //判断计算出来的下一中心与当前中心的距离偏差值是否在设定范围内
+        if (nextCenterDistance < 0.05) {
+            logger.info("center do not need move. centerId: " + cluster.getCenterEntity().getId());
+            return false;
+        }
         //寻找与本中心点距离和nextCenterDistance最接近的点
-        Set<String> idSet = cluster.getEntityMap().keySet();
-        for (String id : idSet) {
+        for (String id : cluster.getEntityMap().keySet()) {
             Double distance = Math.abs(cluster.getEntityMap().get(id) - nextCenterDistance);
             if (null == minDistance || distance < minDistance) {
                 minDistance = distance;
@@ -141,7 +149,9 @@ public class KMeansServiceImpl implements IKMeansSV {
                 entityMap.get(nextCenterId).setIsCenter(1);
                 entityMap.get(nextCenterId).setCenterId(nextCenterId);
                 cluster.setCenterEntity(entityMap.get(nextCenterId));
-//                cluster.getEntityMap().clear();
+                Map<String, Double> newClusterEntityMap = new HashMap<>();
+                newClusterEntityMap.put(nextCenterId, 0D);
+                cluster.setEntityMap(newClusterEntityMap);
                 clusters.put(cluster.getCenterEntity().getId(), cluster);
                 logger.info("new center: " + nextCenterId);
                 return true;
@@ -151,21 +161,27 @@ public class KMeansServiceImpl implements IKMeansSV {
 
     @Override
     public void assignPoints() {
-
         logger.info("[ASSIGN] assign entities start");
+        List<String> centerIdList = new ArrayList<>();
+        for (Cluster cluster: clusters.values()) {
+            centerIdList.add(cluster.getCenterEntity().getCenterId());
+        }
 
         Set<String> entityIdIter = entityMap.keySet();
 
-        //分配结点时清空之前的分配结果
+        //分配entity前清空之前的分配结果
         for(Cluster cluster: clusters.values()) {
             cluster.getEntityMap().clear();
         }
 
         for (String entityId : entityIdIter) {
+            //如果
+            if (centerIdList.contains(entityId)) {
+                continue;
+            }
             ClusterEntityBean entity = entityMap.get(entityId);
             Double distance = null;
             String centerId = null;
-
             for (Cluster cluster : new ArrayList<>(clusters.values())) {
                 Double newDistance = calcDistence(entity, cluster.getCenterEntity());
                 if (null == distance || newDistance < distance) {
@@ -173,11 +189,9 @@ public class KMeansServiceImpl implements IKMeansSV {
                     centerId = cluster.getCenterEntity().getId();
                 }
             }
-
             entity.setCenterId(centerId);
             entity.setDissimilarity(distance);
             clusters.get(centerId).getEntityMap().put(entity.getId(), distance);
-
             logger.info("assign entity(" + entity.getId() + ") to cluster(center:" + centerId + ")");
         }
 
@@ -202,11 +216,13 @@ public class KMeansServiceImpl implements IKMeansSV {
             //当所有聚类更新中心都返回false时，notFinish为false
             boolean update = false;
             for (Cluster cluster : new ArrayList<>(clusters.values())) {
-                update = update | this.updateCenter(cluster);
+                update =this.updateCenter(cluster) | update ;
             }
             notFinish = update;
         }
-        this.syncEntityData();
+        int syncCount = this.syncEntityData();
+        logger.info("entityData sync finished, sync count:" + syncCount);
+        logger.info("k-means service execute success.");
     }
 
     public int syncEntityData() {
@@ -215,13 +231,21 @@ public class KMeansServiceImpl implements IKMeansSV {
 
         Set<String> entityIdSet = entityMap.keySet();
         for (String entityId : entityIdSet) {
+            ClusterEntityBean entity = entityMap.get(entityId);
             try {
                 Map<String, Object> queryMap = new HashMap<>();
                 queryMap.put("_id", entityId);
                 Map<String, Object> updateMap = new HashMap<>();
-                updateMap.put("isCenter", entityMap.get(entityId).getIsCenter());
-                updateMap.put("centerId", entityMap.get(entityId).getCenterId());
+                updateMap.put("isCenter", entity.getIsCenter());
+                updateMap.put("centerId", entity.getCenterId());
                 updateCount += clusterEntityDao.updateEntity(queryMap, updateMap);
+
+                ClusterObj obj = new ClusterObj();
+                obj.setIsCenter(entity.getIsCenter());
+                obj.setCenterId(entity.getCenterId());
+                obj.setMongoId(entity.getId());
+                obj.setCode(entity.getCode());
+                objectSV.updateObjByMongodbId(obj);
             } catch (Exception e) {
                 e.printStackTrace();
             }

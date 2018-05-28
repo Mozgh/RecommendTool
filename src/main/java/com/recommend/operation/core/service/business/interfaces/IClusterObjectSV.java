@@ -1,5 +1,6 @@
 package com.recommend.operation.core.service.business.interfaces;
 
+import com.recommend.operation.core.dao.model.ClusterObj;
 import com.recommend.operation.core.dao.mongo.bean.ClusterEntityBean;
 
 import java.util.List;
@@ -26,4 +27,6 @@ public interface IClusterObjectSV {
     public List<Object> getRecommendResult(String entityCode, String attrCode) throws Exception;
 
     public Integer importEntity(Integer taskId, String host, String port, String user, String password, String database, String sql);
+
+    public Integer updateObjByMongodbId(ClusterObj obj) throws Exception;
 }
