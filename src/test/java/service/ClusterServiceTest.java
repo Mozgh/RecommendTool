@@ -201,7 +201,7 @@ public class ClusterServiceTest {
     @Test
     public void testQueryRecommend() {
         try {
-            List<Object> result = objectSV.getRecommendResult("44", "movie_id");
+            List<Object> result = objectSV.getRecommendResult("44");
             System.out.println(result);
         } catch (Exception e) {
             e.printStackTrace();

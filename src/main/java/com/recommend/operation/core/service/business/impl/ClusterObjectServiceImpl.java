@@ -76,12 +76,14 @@ public class ClusterObjectServiceImpl implements IClusterObjectSV {
     }
 
     @Override
-    public List<Object> getRecommendResult(String entityCode, String attrCode) throws Exception{
-        if (StringUtils.isEmpty(entityCode) || StringUtils.isEmpty(attrCode)) {
-            logger.error("entityCode and attrCode can not be empty");
+    public List<Object> getRecommendResult(String entityCode) throws Exception{
+        if (StringUtils.isEmpty(entityCode)) {
+            logger.error("entityCode can not be empty");
             return null;
         }
         List<Object> result = new ArrayList<>();
+
+        Map<String, KeyCount> keyCountMap = new HashMap<>();
 
         List<ClusterEntityBean> entityList = entityDao.queryEntityListByCode(entityCode);
         if (CollectionUtils.isEmpty(entityList)) {
@@ -96,12 +98,23 @@ public class ClusterObjectServiceImpl implements IClusterObjectSV {
                 return null;
             }
             for (ClusterEntityBean bean: entityWithSameCenter) {
-                Object attrValue = bean.getAttrValue().get(attrCode);
-                if (!result.contains(attrValue)) {
-                    result.add(attrValue);
+                for (String key : bean.getAttrValue().keySet()) {
+                    Object value = bean.getAttrValue().get(key);
+                    if (Integer.parseInt(value.toString()) > 4) {
+                        if(!keyCountMap.containsKey(key)) {
+                            keyCountMap.put(key, new KeyCount(key, 1));
+                        } else {
+                            keyCountMap.get(key).setCount(keyCountMap.get(key).getCount() + 1);
+                        }
+                    }
                 }
             }
+        }
 
+        List<KeyCount> keyCountList = new ArrayList<>(keyCountMap.values());
+        Collections.sort(keyCountList);
+        for (int i = 0; i < 10; i++) {
+            result.add(keyCountList.get(i).getKey());
         }
         return result;
     }
@@ -192,5 +205,37 @@ public class ClusterObjectServiceImpl implements IClusterObjectSV {
         example.createCriteria().andMongoIdEqualTo(obj.getMongoId());
 
         return objMapper.updateByExampleSelective(obj, example);
+    }
+
+
+    private static class KeyCount implements Comparable<KeyCount> {
+        private String key;
+        private Integer count;
+
+        public KeyCount(String key, Integer count) {
+            this.key = key;
+            this.count = count;
+        }
+
+        public String getKey() {
+            return key;
+        }
+
+        public void setKey(String key) {
+            this.key = key;
+        }
+
+        public Integer getCount() {
+            return count;
+        }
+
+        public void setCount(Integer count) {
+            this.count = count;
+        }
+
+        @Override
+        public int compareTo(KeyCount o) {
+            return o.getCount().compareTo(this.getCount());
+        }
     }
 }

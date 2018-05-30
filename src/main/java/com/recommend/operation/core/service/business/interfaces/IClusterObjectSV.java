@@ -22,9 +22,8 @@ public interface IClusterObjectSV {
      * 获取推荐结果，通过传入的entitycode和attrCode，
      * @author zhanggh
      * @param entityCode entity的标识符，获取关于此entity的推荐结果
-     * @param attrCode 要获取的attr,以此code作为key，在entity的attrValue中查找值
      */
-    public List<Object> getRecommendResult(String entityCode, String attrCode) throws Exception;
+    public List<Object> getRecommendResult(String entityCode) throws Exception;
 
     public Integer importEntity(Integer taskId, String host, String port, String user, String password, String database, String sql);
 
