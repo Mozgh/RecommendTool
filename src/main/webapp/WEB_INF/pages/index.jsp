@@ -22,18 +22,48 @@
     <link rel="stylesheet" href="/Recommend/statics/css/component.css"/>
 </head>
 <body>
+
+<header class="am-topbar am-topbar-fixed-top">
+    <div class="am-topbar-left am-hide-sm-only">
+        <a href="index.html" class="logo"><span>Admin<span>to</span></span><i class="zmdi zmdi-layers"></i></a>
+    </div>
+
+    <div class="contain">
+        <ul class="am-nav am-navbar-nav am-navbar-left">
+
+            <li><h4 class="page-title">首页</h4></li>
+        </ul>
+
+        <ul class="am-nav am-navbar-nav am-navbar-right">
+            <li class="inform"><i class="am-icon-bell-o" aria-hidden="true"></i></li>
+            <li class="hidden-xs am-hide-sm-only">
+                <form role="search" class="app-search">
+                    <input type="text" placeholder="Search..." class="form-control">
+                    <a href=""><img src="/Recommend/statics/img/search.png"></a>
+                </form>
+            </li>
+        </ul>
+    </div>
+</header>
 <div class="admin">
     <c:import url="sidebar_left.jsp"/>
-    <div class="am-u-md-3">
-        <div class="card-box">
-            <h4 class="header-title m-t-0 m-b-30">推荐任务</h4>
-            <div class="widget-chart-1 am-cf">
-                <div id="widget-chart-box-1" style="height: 110px;width: 110px;float: left;">
-                </div>
 
-                <div class="widget-detail-1" style="float: right;">
-                    <h2 class="p-t-10 m-b-0"> 256 </h2>
-                    <p class="text-muted">今日收入</p>
+    <div class="content-page">
+        <div class="content">
+            <div class="am-g">
+                <div class="am-u-md-3">
+                    <div class="card-box">
+                        <h4 class="header-title m-t-0 m-b-30">推荐任务</h4>
+                        <div class="widget-chart-1 am-cf">
+                            <div id="widget-chart-box-1" style="height: 110px;width: 110px;float: left;">
+                            </div>
+
+                            <div class="widget-detail-1" style="float: right;">
+                                <h2 class="p-t-10 m-b-0"> 256 </h2>
+                                <p class="text-muted">今日收入</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

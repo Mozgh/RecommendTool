@@ -121,20 +121,13 @@ public class ClusterServiceTest {
 
         try {
             Connection conn = DriverManager.getConnection(url, username, password);
-            String sql = "select a.id,a.gender,a.occupation,a.age, b.movie_id,b.rating from t_user a, rating b where a.id = b.user_id and a.id < 50";
+            String sql = "select a.id,a.gender,a.occupation,a.age, b.movie_id, c.title, b.rating from t_user a, rating b, movie c where a.id < 50 and a.id = b.user_id and b.movie_id = c.id";
 
             PreparedStatement pst = conn.prepareStatement(sql);
 
             ResultSet rst = pst.executeQuery();
             ClusterEntityBean bean;
             Map<String, String> attrType = new HashMap<>();
-//            attrType.put("userId", "1");
-//            attrType.put("gender", "3");
-//            attrType.put("occupation", "3");
-//            attrType.put("age", "1");
-//            attrType.put("movie_id", "3");
-//            attrType.put("rating", "1");
-//            attrType.put("genre", "3");
 
             Map<String, Object> attrValue ;
             while(rst.next()) {
@@ -143,7 +136,8 @@ public class ClusterServiceTest {
                 int occupation = rst.getInt(3);
                 int age = rst.getInt(4);
                 int movie_id = rst.getInt(5);
-                int rating = rst.getInt(6);
+                String movieTitle = rst.getString(6);
+                int rating = rst.getInt(7);
                 bean = new ClusterEntityBean();
                 bean.setTaskId(1001);
                 bean.setIsCenter(0);
@@ -192,7 +186,7 @@ public class ClusterServiceTest {
     @Test
     public void testImportEntity() {
 
-        String sql = "select a.id as userId, a.gender,a.occupation,a.age, b.movie_id,b.rating from t_user a, rating b where a.id = b.user_id and a.id < 50";
+        String sql = "select a.id as userId,a.gender,a.occupation,a.age, b.movie_id, c.title, b.rating from t_user a, rating b, movie c where a.id < 100 and a.id = b.user_id and b.movie_id = c.id";
         Integer count = objectSV.importEntity(1001, "118.25.35.198", "3306", "mozgh", "Mysql@0430", "movie_rating", sql);
 
         System.out.println(count);
@@ -201,7 +195,7 @@ public class ClusterServiceTest {
     @Test
     public void testQueryRecommend() {
         try {
-            List<Object> result = objectSV.getRecommendResult("44");
+            List<Object> result = objectSV.getRecommendResult("76");
             System.out.println(result);
         } catch (Exception e) {
             e.printStackTrace();

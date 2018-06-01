@@ -120,7 +120,7 @@ public class KMeansServiceImpl implements IKMeansSV {
             nextCenterDistance = nextCenterDistance / cluster.getEntityMap().size();
         }
         //判断计算出来的下一中心与当前中心的距离偏差值是否在设定范围内
-        if (nextCenterDistance < 0.05) {
+        if (nextCenterDistance < 0.1) {
             logger.info("center do not need move. centerId: " + cluster.getCenterEntity().getId());
             return false;
         }

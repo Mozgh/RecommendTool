@@ -3,7 +3,7 @@
          xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          id="WebApp_ID" version="3.1">
-  <display-code>api</display-code>
+  <display-name>api</display-name>
   <welcome-file-list>
     <welcome-file>/WEB_INF/pages/index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -14,14 +14,14 @@
   </welcome-file-list>
 
   <context-param>
-    <param-code>log4jConfigLocation</param-code>
+    <param-name>log4jConfigLocation</param-name>
     <param-value>classpath:log4j.conf</param-value>
   </context-param>
 
   <!-- 添加对spring的支持 -->
   <!-- spring的主配置文件 -->
   <context-param>
-    <param-code>contextConfigLocation</param-code>
+    <param-name>contextConfigLocation</param-name>
     <param-value>
       classpath:applicationContext.xml
     </param-value>
@@ -37,35 +37,35 @@
 
   <!-- 字符过滤器 -->
   <filter>
-    <filter-code>encodingFilter</filter-code>
+    <filter-name>encodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
     <init-param>
-      <param-code>encoding</param-code>
+      <param-name>encoding</param-name>
       <param-value>UTF-8</param-value>
     </init-param>
   </filter>
   <filter-mapping>
-    <filter-code>encodingFilter</filter-code>
-    <url-pattern>/*</url-pattern>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/</url-pattern>
   </filter-mapping>
 
   <!-- Http Method 转换，解决form不能使用PUT提交问题 -->
   <filter>
-    <filter-code>HttpMethodFilter</filter-code>
+    <filter-name>HttpMethodFilter</filter-name>
     <filter-class>org.springframework.web.filter.HttpPutFormContentFilter</filter-class>
   </filter>
   <filter-mapping>
-    <filter-code>HttpMethodFilter</filter-code>
-    <url-pattern>/*</url-pattern>
+    <filter-name>HttpMethodFilter</filter-name>
+    <url-pattern>/</url-pattern>
   </filter-mapping>
   <!-- 解决DELETE参数问题 -->
   <filter>
-    <filter-code>HiddenHttpMethodFilter</filter-code>
+    <filter-name>HiddenHttpMethodFilter</filter-name>
     <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
   </filter>
   <filter-mapping>
-    <filter-code>HiddenHttpMethodFilter</filter-code>
-    <servlet-code>mvc-dispatcher</servlet-code>
+    <filter-name>HiddenHttpMethodFilter</filter-name>
+    <servlet-name>mvc-dispatcher</servlet-name>
   </filter-mapping>
 
 
@@ -88,21 +88,19 @@
   <!-- 添加对springmvc的支持 -->
   <!-- Spring MVC 核心控制器 DispatcherServlet 配置 -->
   <servlet>
-    <servlet-code>mvc-dispatcher</servlet-code>
+    <servlet-name>mvc-dispatcher</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
-      <param-code>contextConfigLocation</param-code>
+      <param-name>contextConfigLocation</param-name>
       <param-value>classpath:mvc-dispatcher-servlet.xml</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
 
   <servlet-mapping>
-    <servlet-code>mvc-dispatcher</servlet-code>
+    <servlet-name>mvc-dispatcher</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-
-
 
 
 </web-app>

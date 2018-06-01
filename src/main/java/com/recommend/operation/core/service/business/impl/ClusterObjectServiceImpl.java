@@ -180,11 +180,11 @@ public class ClusterObjectServiceImpl implements IClusterObjectSV {
                     bean.setTaskId(taskId);
                     bean.setIsCenter(0);
                     Map<String, Object> attrValue = new HashMap<>();
-                    attrValue.put(rst.getObject(key).toString(), rst.getObject(value));
+                    attrValue.put(rst.getObject(key).toString().replace(".", "·"), rst.getObject(value));
                     bean.setAttrValue(attrValue);
                     entityMap.put(rst.getObject(code).toString(), bean);
                 } else {
-                    entityMap.get(rst.getObject(code).toString()).getAttrValue().put(rst.getObject(key).toString(), rst.getObject(value));
+                    entityMap.get(rst.getObject(code).toString()).getAttrValue().put(rst.getObject(key).toString().replace(".", "·"), rst.getObject(value));
                 }
             }
             entityList = new ArrayList<ClusterEntityBean>(entityMap.values());

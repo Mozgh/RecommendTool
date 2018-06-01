@@ -35,6 +35,7 @@ public interface IClusterTaskSV {
 
     public ClusterTask queryTaskById(Integer taskId);
 
+    public List<ClusterTask> queryTaskByUserId(Integer userId);
     /**
      * excuse a task by id
      * @author zhanggh
