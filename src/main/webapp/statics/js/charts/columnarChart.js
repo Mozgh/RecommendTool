@@ -1,6 +1,6 @@
 /*----------------------柱状图-----------------------*/
 //坐标轴刻度与标签对齐
-(function(){
+/*(function(){
 	
 var columnar1 = echarts.init(document.getElementById("columnar1"));
 
@@ -54,7 +54,7 @@ option = {
 };
 
 columnar1.setOption(option);
-})();
+})();*/
 
 
 

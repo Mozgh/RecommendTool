@@ -3,6 +3,8 @@ package com.recommend.operation.core.dao.interfaces;
 import com.recommend.operation.core.dao.model.ClusterObj;
 import com.recommend.operation.core.dao.model.ClusterObjExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 

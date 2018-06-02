@@ -8,8 +8,16 @@
     <result column="method" jdbcType="INTEGER" property="method" />
     <result column="describes" jdbcType="VARCHAR" property="describes" />
     <result column="center" jdbcType="INTEGER" property="center" />
+    <result column="db_host" jdbcType="VARCHAR" property="dbHost" />
+    <result column="db_port" jdbcType="VARCHAR" property="dbPort" />
+    <result column="db_name" jdbcType="VARCHAR" property="dbName" />
+    <result column="db_user" jdbcType="VARCHAR" property="dbUser" />
+    <result column="db_password" jdbcType="VARCHAR" property="dbPassword" />
     <result column="state" jdbcType="INTEGER" property="state" />
     <result column="del_flag" jdbcType="INTEGER" property="delFlag" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.recommend.operation.core.dao.model.ClusterTask">
+    <result column="query_sql" jdbcType="LONGVARCHAR" property="querySql" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,8 +78,29 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_id, name, method, describes, center, state, del_flag
+    id, user_id, name, method, describes, center, db_host, db_port, db_name, db_user, 
+    db_password, state, del_flag
   </sql>
+  <sql id="Blob_Column_List">
+    query_sql
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.recommend.operation.core.dao.model.ClusterTaskExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from cluster_task
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" parameterType="com.recommend.operation.core.dao.model.ClusterTaskExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -87,9 +116,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from cluster_task
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -103,15 +134,19 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.recommend.operation.core.dao.model.ClusterTask"  useGeneratedKeys="true" keyProperty="id">
+  <insert id="insert" parameterType="com.recommend.operation.core.dao.model.ClusterTask">
     insert into cluster_task (id, user_id, name, 
       method, describes, center, 
-      state, del_flag)
+      db_host, db_port, db_name, 
+      db_user, db_password, state, 
+      del_flag, query_sql)
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
       #{method,jdbcType=INTEGER}, #{describes,jdbcType=VARCHAR}, #{center,jdbcType=INTEGER}, 
-      #{state,jdbcType=INTEGER}, #{delFlag,jdbcType=INTEGER})
+      #{dbHost,jdbcType=VARCHAR}, #{dbPort,jdbcType=VARCHAR}, #{dbName,jdbcType=VARCHAR}, 
+      #{dbUser,jdbcType=VARCHAR}, #{dbPassword,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, 
+      #{delFlag,jdbcType=INTEGER}, #{querySql,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.recommend.operation.core.dao.model.ClusterTask"  useGeneratedKeys="true" keyProperty="id">
+  <insert id="insertSelective" parameterType="com.recommend.operation.core.dao.model.ClusterTask">
     insert into cluster_task
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -132,11 +167,29 @@
       <if test="center != null">
         center,
       </if>
+      <if test="dbHost != null">
+        db_host,
+      </if>
+      <if test="dbPort != null">
+        db_port,
+      </if>
+      <if test="dbName != null">
+        db_name,
+      </if>
+      <if test="dbUser != null">
+        db_user,
+      </if>
+      <if test="dbPassword != null">
+        db_password,
+      </if>
       <if test="state != null">
         state,
       </if>
       <if test="delFlag != null">
         del_flag,
+      </if>
+      <if test="querySql != null">
+        query_sql,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -158,11 +211,29 @@
       <if test="center != null">
         #{center,jdbcType=INTEGER},
       </if>
+      <if test="dbHost != null">
+        #{dbHost,jdbcType=VARCHAR},
+      </if>
+      <if test="dbPort != null">
+        #{dbPort,jdbcType=VARCHAR},
+      </if>
+      <if test="dbName != null">
+        #{dbName,jdbcType=VARCHAR},
+      </if>
+      <if test="dbUser != null">
+        #{dbUser,jdbcType=VARCHAR},
+      </if>
+      <if test="dbPassword != null">
+        #{dbPassword,jdbcType=VARCHAR},
+      </if>
       <if test="state != null">
         #{state,jdbcType=INTEGER},
       </if>
       <if test="delFlag != null">
         #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="querySql != null">
+        #{querySql,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -193,13 +264,51 @@
       <if test="record.center != null">
         center = #{record.center,jdbcType=INTEGER},
       </if>
+      <if test="record.dbHost != null">
+        db_host = #{record.dbHost,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbPort != null">
+        db_port = #{record.dbPort,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbName != null">
+        db_name = #{record.dbName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbUser != null">
+        db_user = #{record.dbUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbPassword != null">
+        db_password = #{record.dbPassword,jdbcType=VARCHAR},
+      </if>
       <if test="record.state != null">
         state = #{record.state,jdbcType=INTEGER},
       </if>
       <if test="record.delFlag != null">
         del_flag = #{record.delFlag,jdbcType=INTEGER},
       </if>
+      <if test="record.querySql != null">
+        query_sql = #{record.querySql,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update cluster_task
+    set id = #{record.id,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      method = #{record.method,jdbcType=INTEGER},
+      describes = #{record.describes,jdbcType=VARCHAR},
+      center = #{record.center,jdbcType=INTEGER},
+      db_host = #{record.dbHost,jdbcType=VARCHAR},
+      db_port = #{record.dbPort,jdbcType=VARCHAR},
+      db_name = #{record.dbName,jdbcType=VARCHAR},
+      db_user = #{record.dbUser,jdbcType=VARCHAR},
+      db_password = #{record.dbPassword,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=INTEGER},
+      del_flag = #{record.delFlag,jdbcType=INTEGER},
+      query_sql = #{record.querySql,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -212,6 +321,11 @@
       method = #{record.method,jdbcType=INTEGER},
       describes = #{record.describes,jdbcType=VARCHAR},
       center = #{record.center,jdbcType=INTEGER},
+      db_host = #{record.dbHost,jdbcType=VARCHAR},
+      db_port = #{record.dbPort,jdbcType=VARCHAR},
+      db_name = #{record.dbName,jdbcType=VARCHAR},
+      db_user = #{record.dbUser,jdbcType=VARCHAR},
+      db_password = #{record.dbPassword,jdbcType=VARCHAR},
       state = #{record.state,jdbcType=INTEGER},
       del_flag = #{record.delFlag,jdbcType=INTEGER}
     <if test="_parameter != null">
@@ -236,13 +350,48 @@
       <if test="center != null">
         center = #{center,jdbcType=INTEGER},
       </if>
+      <if test="dbHost != null">
+        db_host = #{dbHost,jdbcType=VARCHAR},
+      </if>
+      <if test="dbPort != null">
+        db_port = #{dbPort,jdbcType=VARCHAR},
+      </if>
+      <if test="dbName != null">
+        db_name = #{dbName,jdbcType=VARCHAR},
+      </if>
+      <if test="dbUser != null">
+        db_user = #{dbUser,jdbcType=VARCHAR},
+      </if>
+      <if test="dbPassword != null">
+        db_password = #{dbPassword,jdbcType=VARCHAR},
+      </if>
       <if test="state != null">
         state = #{state,jdbcType=INTEGER},
       </if>
       <if test="delFlag != null">
         del_flag = #{delFlag,jdbcType=INTEGER},
       </if>
+      <if test="querySql != null">
+        query_sql = #{querySql,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.recommend.operation.core.dao.model.ClusterTask">
+    update cluster_task
+    set user_id = #{userId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      method = #{method,jdbcType=INTEGER},
+      describes = #{describes,jdbcType=VARCHAR},
+      center = #{center,jdbcType=INTEGER},
+      db_host = #{dbHost,jdbcType=VARCHAR},
+      db_port = #{dbPort,jdbcType=VARCHAR},
+      db_name = #{dbName,jdbcType=VARCHAR},
+      db_user = #{dbUser,jdbcType=VARCHAR},
+      db_password = #{dbPassword,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      del_flag = #{delFlag,jdbcType=INTEGER},
+      query_sql = #{querySql,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.recommend.operation.core.dao.model.ClusterTask">
@@ -252,8 +401,14 @@
       method = #{method,jdbcType=INTEGER},
       describes = #{describes,jdbcType=VARCHAR},
       center = #{center,jdbcType=INTEGER},
+      db_host = #{dbHost,jdbcType=VARCHAR},
+      db_port = #{dbPort,jdbcType=VARCHAR},
+      db_name = #{dbName,jdbcType=VARCHAR},
+      db_user = #{dbUser,jdbcType=VARCHAR},
+      db_password = #{dbPassword,jdbcType=VARCHAR},
       state = #{state,jdbcType=INTEGER},
       del_flag = #{delFlag,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
 </mapper>

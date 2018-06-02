@@ -3,6 +3,7 @@ package com.recommend.operation.core.service.business.impl;
 import com.recommend.operation.core.dao.interfaces.ClusterObjMapper;
 import com.recommend.operation.core.dao.model.ClusterAttr;
 import com.recommend.operation.core.dao.model.ClusterObj;
+import com.recommend.operation.core.dao.model.ClusterObjCount;
 import com.recommend.operation.core.dao.model.ClusterObjExample;
 import com.recommend.operation.core.dao.mongo.bean.ClusterEntityBean;
 import com.recommend.operation.core.dao.mongo.interfaces.ClusterEntityDao;
@@ -205,6 +206,25 @@ public class ClusterObjectServiceImpl implements IClusterObjectSV {
         example.createCriteria().andMongoIdEqualTo(obj.getMongoId());
 
         return objMapper.updateByExampleSelective(obj, example);
+    }
+
+    @Override
+    public List<ClusterObjCount> queryClusterResult(Integer taskId) {
+        List<ClusterObjCount> result = new ArrayList<>();
+        ClusterObjExample example = new ClusterObjExample();
+        example.createCriteria().andTaskIdEqualTo(taskId).andIsCenterEqualTo(1);
+        List<ClusterObj> centers = objMapper.selectByExample(example);
+        if (!CollectionUtils.isEmpty(centers)) {
+            for (ClusterObj center: centers) {
+                example.clear();
+                example.createCriteria().andCenterIdEqualTo(center.getMongoId());
+
+                Long count = objMapper.countByExample(example);
+                ClusterObjCount coc = new ClusterObjCount(center.getMongoId(), count);
+                result.add(coc);
+            }
+        }
+        return result;
     }
 
 

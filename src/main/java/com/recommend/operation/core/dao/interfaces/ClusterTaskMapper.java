@@ -4,9 +4,7 @@ import com.recommend.operation.core.dao.model.ClusterTask;
 import com.recommend.operation.core.dao.model.ClusterTaskExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
 
-@Component
 public interface ClusterTaskMapper {
     long countByExample(ClusterTaskExample example);
 
@@ -18,15 +16,21 @@ public interface ClusterTaskMapper {
 
     int insertSelective(ClusterTask record);
 
+    List<ClusterTask> selectByExampleWithBLOBs(ClusterTaskExample example);
+
     List<ClusterTask> selectByExample(ClusterTaskExample example);
 
     ClusterTask selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") ClusterTask record, @Param("example") ClusterTaskExample example);
 
+    int updateByExampleWithBLOBs(@Param("record") ClusterTask record, @Param("example") ClusterTaskExample example);
+
     int updateByExample(@Param("record") ClusterTask record, @Param("example") ClusterTaskExample example);
 
     int updateByPrimaryKeySelective(ClusterTask record);
+
+    int updateByPrimaryKeyWithBLOBs(ClusterTask record);
 
     int updateByPrimaryKey(ClusterTask record);
 }

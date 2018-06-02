@@ -169,7 +169,10 @@
         var checkbox = document.getElementsByName("checkTaskId");
         var taskIdList = new Array();
         for (var i = 0; i< checkbox.length; i++) {
-            taskIdList[i] = checkbox[i].getAttribute("value");
+            if (checkbox[i].checked) {
+//                taskIdList[i] = checkbox[i].getAttribute("value");
+                taskIdList.push(checkbox[i].getAttribute("value"));
+            }
         }
         return taskIdList;
     }

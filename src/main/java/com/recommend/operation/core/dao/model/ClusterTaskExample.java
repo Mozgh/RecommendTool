@@ -484,6 +484,356 @@ public class ClusterTaskExample {
             return (Criteria) this;
         }
 
+        public Criteria andDbHostIsNull() {
+            addCriterion("db_host is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbHostIsNotNull() {
+            addCriterion("db_host is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbHostEqualTo(String value) {
+            addCriterion("db_host =", value, "dbHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbHostNotEqualTo(String value) {
+            addCriterion("db_host <>", value, "dbHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbHostGreaterThan(String value) {
+            addCriterion("db_host >", value, "dbHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbHostGreaterThanOrEqualTo(String value) {
+            addCriterion("db_host >=", value, "dbHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbHostLessThan(String value) {
+            addCriterion("db_host <", value, "dbHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbHostLessThanOrEqualTo(String value) {
+            addCriterion("db_host <=", value, "dbHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbHostLike(String value) {
+            addCriterion("db_host like", value, "dbHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbHostNotLike(String value) {
+            addCriterion("db_host not like", value, "dbHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbHostIn(List<String> values) {
+            addCriterion("db_host in", values, "dbHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbHostNotIn(List<String> values) {
+            addCriterion("db_host not in", values, "dbHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbHostBetween(String value1, String value2) {
+            addCriterion("db_host between", value1, value2, "dbHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbHostNotBetween(String value1, String value2) {
+            addCriterion("db_host not between", value1, value2, "dbHost");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPortIsNull() {
+            addCriterion("db_port is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPortIsNotNull() {
+            addCriterion("db_port is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPortEqualTo(String value) {
+            addCriterion("db_port =", value, "dbPort");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPortNotEqualTo(String value) {
+            addCriterion("db_port <>", value, "dbPort");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPortGreaterThan(String value) {
+            addCriterion("db_port >", value, "dbPort");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPortGreaterThanOrEqualTo(String value) {
+            addCriterion("db_port >=", value, "dbPort");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPortLessThan(String value) {
+            addCriterion("db_port <", value, "dbPort");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPortLessThanOrEqualTo(String value) {
+            addCriterion("db_port <=", value, "dbPort");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPortLike(String value) {
+            addCriterion("db_port like", value, "dbPort");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPortNotLike(String value) {
+            addCriterion("db_port not like", value, "dbPort");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPortIn(List<String> values) {
+            addCriterion("db_port in", values, "dbPort");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPortNotIn(List<String> values) {
+            addCriterion("db_port not in", values, "dbPort");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPortBetween(String value1, String value2) {
+            addCriterion("db_port between", value1, value2, "dbPort");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPortNotBetween(String value1, String value2) {
+            addCriterion("db_port not between", value1, value2, "dbPort");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbNameIsNull() {
+            addCriterion("db_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbNameIsNotNull() {
+            addCriterion("db_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbNameEqualTo(String value) {
+            addCriterion("db_name =", value, "dbName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbNameNotEqualTo(String value) {
+            addCriterion("db_name <>", value, "dbName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbNameGreaterThan(String value) {
+            addCriterion("db_name >", value, "dbName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbNameGreaterThanOrEqualTo(String value) {
+            addCriterion("db_name >=", value, "dbName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbNameLessThan(String value) {
+            addCriterion("db_name <", value, "dbName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbNameLessThanOrEqualTo(String value) {
+            addCriterion("db_name <=", value, "dbName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbNameLike(String value) {
+            addCriterion("db_name like", value, "dbName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbNameNotLike(String value) {
+            addCriterion("db_name not like", value, "dbName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbNameIn(List<String> values) {
+            addCriterion("db_name in", values, "dbName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbNameNotIn(List<String> values) {
+            addCriterion("db_name not in", values, "dbName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbNameBetween(String value1, String value2) {
+            addCriterion("db_name between", value1, value2, "dbName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbNameNotBetween(String value1, String value2) {
+            addCriterion("db_name not between", value1, value2, "dbName");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbUserIsNull() {
+            addCriterion("db_user is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbUserIsNotNull() {
+            addCriterion("db_user is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbUserEqualTo(String value) {
+            addCriterion("db_user =", value, "dbUser");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbUserNotEqualTo(String value) {
+            addCriterion("db_user <>", value, "dbUser");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbUserGreaterThan(String value) {
+            addCriterion("db_user >", value, "dbUser");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbUserGreaterThanOrEqualTo(String value) {
+            addCriterion("db_user >=", value, "dbUser");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbUserLessThan(String value) {
+            addCriterion("db_user <", value, "dbUser");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbUserLessThanOrEqualTo(String value) {
+            addCriterion("db_user <=", value, "dbUser");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbUserLike(String value) {
+            addCriterion("db_user like", value, "dbUser");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbUserNotLike(String value) {
+            addCriterion("db_user not like", value, "dbUser");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbUserIn(List<String> values) {
+            addCriterion("db_user in", values, "dbUser");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbUserNotIn(List<String> values) {
+            addCriterion("db_user not in", values, "dbUser");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbUserBetween(String value1, String value2) {
+            addCriterion("db_user between", value1, value2, "dbUser");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbUserNotBetween(String value1, String value2) {
+            addCriterion("db_user not between", value1, value2, "dbUser");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPasswordIsNull() {
+            addCriterion("db_password is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPasswordIsNotNull() {
+            addCriterion("db_password is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPasswordEqualTo(String value) {
+            addCriterion("db_password =", value, "dbPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPasswordNotEqualTo(String value) {
+            addCriterion("db_password <>", value, "dbPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPasswordGreaterThan(String value) {
+            addCriterion("db_password >", value, "dbPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPasswordGreaterThanOrEqualTo(String value) {
+            addCriterion("db_password >=", value, "dbPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPasswordLessThan(String value) {
+            addCriterion("db_password <", value, "dbPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPasswordLessThanOrEqualTo(String value) {
+            addCriterion("db_password <=", value, "dbPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPasswordLike(String value) {
+            addCriterion("db_password like", value, "dbPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPasswordNotLike(String value) {
+            addCriterion("db_password not like", value, "dbPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPasswordIn(List<String> values) {
+            addCriterion("db_password in", values, "dbPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPasswordNotIn(List<String> values) {
+            addCriterion("db_password not in", values, "dbPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPasswordBetween(String value1, String value2) {
+            addCriterion("db_password between", value1, value2, "dbPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andDbPasswordNotBetween(String value1, String value2) {
+            addCriterion("db_password not between", value1, value2, "dbPassword");
+            return (Criteria) this;
+        }
+
         public Criteria andStateIsNull() {
             addCriterion("state is null");
             return (Criteria) this;

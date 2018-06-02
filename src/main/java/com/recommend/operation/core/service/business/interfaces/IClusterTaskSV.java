@@ -3,8 +3,10 @@ package com.recommend.operation.core.service.business.interfaces;
 import com.recommend.operation.core.dao.model.ClusterAttr;
 import com.recommend.operation.core.dao.model.ClusterTask;
 import com.recommend.operation.core.dao.mongo.bean.ClusterEntityBean;
+import com.recommend.operation.core.util.Cluster;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by feir4 on 2018/4/29.

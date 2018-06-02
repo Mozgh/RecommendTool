@@ -67,18 +67,19 @@
                             </li>
                         </ul>
 
-                        <form action="" class="am-form" data-am-validator>
+                        <%--<form action="/task/createTask" method="post" class="am-form" data-am-validator>--%>
+                        <div class="am-form">
                             <fieldset>
                                 <legend>任务信息</legend>
                                 <div class="am-form-group">
-                                    <label for="doc-vld-code-2">任务名称</label>
-                                    <input type="text" id="doc-vld-code-2" minlength="3" placeholder="输入任务名称"
+                                    <label for="taskName">任务名称</label>
+                                    <input type="text" id="taskName" minlength="3" placeholder="输入任务名称"
                                            required/>
                                 </div>
 
                                 <div class="am-form-group">
-                                    <label for="doc-select-1">算法</label>
-                                    <select id="doc-select-1" required>
+                                    <label for="method">算法</label>
+                                    <select id="method" required>
                                         <option value="">-=请选择一项=-</option>
                                         <option value="1">K-means聚类算法</option>
                                     </select>
@@ -86,19 +87,49 @@
                                 </div>
 
                                 <div class="am-form-group">
-                                    <label for="doc-vld-email-2">任务描述</label>
-                                    <input type="email" id="doc-vld-email-2" placeholder="输入任务描述" required/>
+                                    <label for="description">任务描述</label>
+                                    <input type="text" id="description" minlength="1" placeholder="输入任务描述" required/>
                                 </div>
 
                                 <div class="am-form-group">
-                                    <label for="doc-vld-url-2">初始聚类个数</label>
-                                    <input type="url" id="doc-vld-url-2" placeholder="输入数字" required/>
+                                    <label for="centerCount">初始聚类个数</label>
+                                    <input type="number" id="centerCount" placeholder="输入数字" required/>
                                 </div>
 
-                                <button class="am-btn am-btn-secondary" type="submit">提交</button>
-                            </fieldset>
-                        </form>
+                                <div class="am-form-group">
+                                    <label for="dbHost">数据库地址</label>
+                                    <input type="text" id="dbHost" minlength="1" placeholder="输入IP地址" required/>
+                                </div>
 
+                                <div class="am-form-group">
+                                    <label for="dbPort">数据库端口</label>
+                                    <input type="number" id="dbPort" minlength="1" placeholder="输入端口" required/>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="dbName">数据库名</label>
+                                    <input type="text" id="dbName" minlength="1" placeholder="用户名" required/>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="dbUser">数据库用户</label>
+                                    <input type="text" id="dbUser" minlength="1" placeholder="用户名" required/>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="dbPassword">数据库密码</label>
+                                    <input type="password" id="dbPassword" minlength="1" placeholder="输入密码" required/>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="querySql">数据查询语句</label>
+                                    <input type="text" id="querySql" minlength="1" placeholder="sql" required/>
+                                </div>
+
+                                <button class="am-btn am-btn-secondary" type="submit" onclick="submit()">提交</button>
+                            </fieldset>
+                        <%--</form>--%>
+                        </div>
 
                     </div>
                 </div>
@@ -115,5 +146,41 @@
 <script type="text/javascript" src="/Recommend/statics/js/amazeui.min.js"></script>
 <script type="text/javascript" src="/Recommend/statics/js/app.js"></script>
 <script type="text/javascript" src="/Recommend/statics/js/blockUI.js"></script>
+
+<script type="text/javascript">
+    function submit() {
+        var taskName = document.getElementById("taskName");
+        var method = document.getElementById("method");
+        var description = document.getElementById("description");
+        var centerCount = document.getElementById("centerCount");
+        var dbHost = document.getElementById("dbHost");
+        var dbPort = document.getElementById("dbPort");
+        var dbName = document.getElementById("dbName");
+        var dbUser = document.getElementById("dbUser");
+        var dbPassword = document.getElementById("dbPassword");
+        var querySql = document.getElementById("querySql");
+
+        data = {
+            taskName: taskName.value,
+            method: method.value,
+            description: description.value,
+            centerCount: centerCount.value,
+            dbHost: dbHost.value,
+            dbPort: dbPort.value,
+            dbName: dbName.value,
+            dbUser: dbUser.value,
+            dbPassword: dbPassword.value,
+            querySql: querySql.value
+        }
+        console.log(data.toString());
+
+        var url = "http://localhost:8080/task/createTask";
+        $.post(url, data, function (responseTxt) {
+            alert(responseTxt.message);
+        })
+    }
+
+
+</script>
 </body>
 </html>

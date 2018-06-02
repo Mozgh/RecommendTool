@@ -13,9 +13,21 @@ public class ClusterTask {
 
     private Integer center;
 
+    private String dbHost;
+
+    private String dbPort;
+
+    private String dbName;
+
+    private String dbUser;
+
+    private String dbPassword;
+
     private Integer state;
 
     private Integer delFlag;
+
+    private String querySql;
 
     public Integer getId() {
         return id;
@@ -65,6 +77,46 @@ public class ClusterTask {
         this.center = center;
     }
 
+    public String getDbHost() {
+        return dbHost;
+    }
+
+    public void setDbHost(String dbHost) {
+        this.dbHost = dbHost;
+    }
+
+    public String getDbPort() {
+        return dbPort;
+    }
+
+    public void setDbPort(String dbPort) {
+        this.dbPort = dbPort;
+    }
+
+    public String getDbName() {
+        return dbName;
+    }
+
+    public void setDbName(String dbName) {
+        this.dbName = dbName;
+    }
+
+    public String getDbUser() {
+        return dbUser;
+    }
+
+    public void setDbUser(String dbUser) {
+        this.dbUser = dbUser;
+    }
+
+    public String getDbPassword() {
+        return dbPassword;
+    }
+
+    public void setDbPassword(String dbPassword) {
+        this.dbPassword = dbPassword;
+    }
+
     public Integer getState() {
         return state;
     }
@@ -79,5 +131,13 @@ public class ClusterTask {
 
     public void setDelFlag(Integer delFlag) {
         this.delFlag = delFlag;
+    }
+
+    public String getQuerySql() {
+        return querySql;
+    }
+
+    public void setQuerySql(String querySql) {
+        this.querySql = querySql;
     }
 }

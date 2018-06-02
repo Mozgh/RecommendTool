@@ -58,7 +58,7 @@
                                                                                       aria-hidden="true"></i> 统计图表 <span
                             class="am-icon-angle-right am-fr am-margin-right"></span></a>
                     <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav2">
-                        <li><a href="chart_line.html" class="am-cf"> 数据查看</a></li>
+                        <li><a href="cluster_result.jsp" class="am-cf"> 数据查看</a></li>
                     </ul>
                 </li>
             </ul>
