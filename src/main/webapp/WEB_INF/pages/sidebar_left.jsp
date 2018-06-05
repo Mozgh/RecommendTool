@@ -45,14 +45,14 @@
             <ul class="am-list admin-sidebar-list">
                 <li><a href="index.jsp"><span class="am-icon-home"></span> 首页</a></li>
                 <li></li>
-                <li class="admin-parent">
+                <%--<li class="admin-parent">
                     <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-table"></span>
                         任务 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
                     <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav1">
                         <li><a href="cluster_task.jsp" class="am-cf"> 任务列表</a></li>
                         <li><a href="cluster_task_add.jsp">新建任务</a></li>
                     </ul>
-                </li>
+                </li>--%>
                 <li class="admin-parent">
                     <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><i class="am-icon-line-chart"
                                                                                       aria-hidden="true"></i> 统计图表 <span

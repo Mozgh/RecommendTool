@@ -220,7 +220,7 @@ public class ClusterObjectServiceImpl implements IClusterObjectSV {
                 example.createCriteria().andCenterIdEqualTo(center.getMongoId());
 
                 Long count = objMapper.countByExample(example);
-                ClusterObjCount coc = new ClusterObjCount(center.getMongoId(), count);
+                ClusterObjCount coc = new ClusterObjCount(center.getCode(), count);
                 result.add(coc);
             }
         }
